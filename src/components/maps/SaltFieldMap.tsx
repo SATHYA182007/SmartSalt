@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { SaltBlock } from '../../types';
 import { Badge } from '../ui/Badge';
 import { LeafletSaltMap } from './LeafletSaltMap';
-import { Map, Grid3X3, Zap, Droplets, Thermometer, Radio } from 'lucide-react';
+import { Map, Grid3X3, Zap, Droplets, Thermometer } from 'lucide-react';
 
 interface SaltFieldMapProps {
   blocks: SaltBlock[];
@@ -29,20 +29,20 @@ export const SaltFieldMap: React.FC<SaltFieldMapProps> = ({ blocks, selectedBloc
   };
 
   return (
-    <div className="bg-white border border-slate-200/90 rounded-2xl p-4 sm:p-6 shadow-xs flex flex-col gap-6">
+    <div className="bg-white border border-slate-200/90 rounded-2xl p-4 sm:p-6 shadow-xs flex flex-col gap-5">
       {/* Map Header with View Switcher */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-4">
         <div>
           <div className="flex items-center gap-2">
             <h2 className="text-base sm:text-lg font-bold text-slate-900">
-              Interactive Salt Field Map
+              Interactive Salt Evaporation Pan Map
             </h2>
             <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">
               12 Active Pans
             </span>
           </div>
           <p className="text-xs text-slate-500 mt-0.5">
-            Real-time OpenStreetMap satellite telemetry, LoRa node status & spatial block monitoring
+            Real-time OpenStreetMap & Esri satellite telemetry, LoRa node status & spatial block monitoring
           </p>
         </div>
 
@@ -52,23 +52,23 @@ export const SaltFieldMap: React.FC<SaltFieldMapProps> = ({ blocks, selectedBloc
           <div className="flex items-center bg-slate-100 p-1 rounded-xl">
             <button
               onClick={() => setViewMode('map')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-all ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-extrabold flex items-center gap-1.5 transition-all ${
                 viewMode === 'map'
                   ? 'bg-blue-600 text-white shadow-xs'
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
-              <Map className="w-3.5 h-3.5" /> Satellite Map
+              <Map className="w-4 h-4" /> Live Satellite Map
             </button>
             <button
               onClick={() => setViewMode('grid')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-all ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-extrabold flex items-center gap-1.5 transition-all ${
                 viewMode === 'grid'
                   ? 'bg-blue-600 text-white shadow-xs'
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
-              <Grid3X3 className="w-3.5 h-3.5" /> Spatial Grid
+              <Grid3X3 className="w-4 h-4" /> Spatial Pan Grid
             </button>
           </div>
 
@@ -81,13 +81,13 @@ export const SaltFieldMap: React.FC<SaltFieldMapProps> = ({ blocks, selectedBloc
               <span className="w-2.5 h-2.5 rounded-full bg-amber-500" /> Monitoring
             </span>
             <span className="flex items-center gap-1 text-slate-700">
-              <span className="w-2.5 h-2.5 rounded-full bg-rose-500" /> Alert
+              <span className="w-2.5 h-2.5 rounded-full bg-rose-500" /> Action Required
             </span>
           </div>
         </div>
       </div>
 
-      {/* Main Map / Grid View Body */}
+      {/* Main View Body */}
       {viewMode === 'map' ? (
         <LeafletSaltMap
           blocks={blocks}
