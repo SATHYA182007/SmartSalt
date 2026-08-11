@@ -128,9 +128,9 @@
 .bg-moving-grid {
   background-size: 48px 48px;
   background-image: 
-    linear-gradient(to right, rgba(13, 148, 136, 0.2) 1.5px, transparent 1.5px),
-    linear-gradient(to bottom, rgba(13, 148, 136, 0.2) 1.5px, transparent 1.5px);
-  animation: slow-moving-grid 8s linear infinite;
+    linear-gradient(to right, rgba(13, 148, 136, 0.22) 1.5px, transparent 1.5px),
+    linear-gradient(to bottom, rgba(13, 148, 136, 0.22) 1.5px, transparent 1.5px);
+  animation: slow-moving-grid 3s linear infinite;
   mask-image: radial-gradient(ellipse 90% 90% at 50% 35%, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.3) 75%, transparent 100%);
   -webkit-mask-image: radial-gradient(ellipse 90% 90% at 50% 35%, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.3) 75%, transparent 100%);
 }
@@ -138,9 +138,9 @@
 .bg-moving-grid-accent {
   background-size: 40px 40px;
   background-image: 
-    linear-gradient(to right, rgba(6, 182, 212, 0.22) 1.5px, transparent 1.5px),
-    linear-gradient(to bottom, rgba(6, 182, 212, 0.22) 1.5px, transparent 1.5px);
-  animation: slow-moving-grid 10s linear infinite reverse;
+    linear-gradient(to right, rgba(6, 182, 212, 0.24) 1.5px, transparent 1.5px),
+    linear-gradient(to bottom, rgba(6, 182, 212, 0.24) 1.5px, transparent 1.5px);
+  animation: slow-moving-grid 3.5s linear infinite reverse;
   mask-image: radial-gradient(ellipse 90% 90% at 50% 50%, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.25) 80%, transparent 100%);
   -webkit-mask-image: radial-gradient(ellipse 90% 90% at 50% 50%, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.25) 80%, transparent 100%);
 }
