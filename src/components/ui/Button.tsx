@@ -22,11 +22,12 @@ export const Button: React.FC<ButtonProps> = ({
   ...props
 }) => {
   const baseStyle =
-    'inline-flex items-center justify-center font-medium rounded-xl transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer select-none';
+    'inline-flex items-center justify-center font-semibold rounded-xl transition-all focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer select-none';
 
   const variantStyles = {
-    primary: 'bg-blue-600 hover:bg-blue-700 text-white shadow-sm shadow-blue-200 border border-blue-600',
-    secondary: 'bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200',
+    primary:
+      'bg-gradient-to-r from-teal-600 via-cyan-600 to-teal-500 hover:from-teal-700 hover:via-cyan-700 hover:to-teal-600 text-white shadow-md shadow-cyan-500/25 border border-teal-500/30',
+    secondary: 'bg-teal-50/80 hover:bg-teal-100/90 text-teal-800 border border-teal-200/80 shadow-xs',
     outline: 'bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 hover:border-slate-300 shadow-xs',
     ghost: 'bg-transparent hover:bg-slate-100 text-slate-700',
     danger: 'bg-red-600 hover:bg-red-700 text-white border border-red-600 shadow-sm',

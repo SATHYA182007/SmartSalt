@@ -67,48 +67,47 @@ export const AuthPage: React.FC = () => {
 
       <div className="w-full max-w-5xl bg-white border border-slate-200 rounded-3xl shadow-xl overflow-hidden grid grid-cols-1 lg:grid-cols-2">
         {/* LEFT COLUMN: SmartSalt AI Branding & Visual */}
-        <div className="bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 p-8 sm:p-12 text-white flex flex-col justify-between relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="bg-gradient-to-br from-teal-700 via-cyan-800 to-slate-900 p-8 sm:p-12 text-white flex flex-col justify-between relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-teal-400/20 rounded-full blur-3xl pointer-events-none" />
 
           {/* Logo Header */}
           <div className="relative z-10 space-y-4">
             <div
               onClick={() => navigate('/')}
-              className="flex items-center gap-3 cursor-pointer group"
+              className="flex items-center cursor-pointer group"
             >
-              <div className="w-12 h-12 rounded-2xl bg-white text-blue-600 font-extrabold text-2xl flex items-center justify-center shadow-lg">
-                🧂
-              </div>
-              <span className="font-black text-2xl tracking-tight">
-                SmartSalt <span className="text-blue-200">AI</span>
-              </span>
+              <img
+                src="/sslogo-transparent.png"
+                alt="SmartSalt AI Logo"
+                className="h-14 sm:h-16 w-auto object-contain brightness-0 invert drop-shadow-md transition-transform group-hover:scale-105"
+              />
             </div>
-            <p className="text-blue-100 text-sm font-medium leading-relaxed max-w-sm">
+            <p className="text-teal-100 text-sm font-medium leading-relaxed max-w-sm">
               Intelligent IoT Sensing & AI Production Control for Salt Evaporation Fields.
             </p>
           </div>
 
           {/* Center Showcase Card */}
           <div className="relative z-10 my-8 p-6 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 space-y-3">
-            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-blue-200">
-              <Sparkles className="w-4 h-4 text-blue-300" /> Demo Accounts Included
+            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-teal-200">
+              <Sparkles className="w-4 h-4 text-cyan-300 animate-pulse" /> Demo Accounts Included
             </div>
-            <p className="text-xs text-blue-50 leading-relaxed">
+            <p className="text-xs text-teal-50 leading-relaxed">
               Test either role instantly: Field Operator (monitoring brine EC & harvest prediction) or System Administrator (hardware node mesh & gateways).
             </p>
           </div>
 
           {/* Footer badge */}
-          <div className="relative z-10 text-xs text-blue-200 flex items-center gap-2">
-            <Radio className="w-4 h-4 text-emerald-400" /> LoRa Mesh Hardware Control Center
+          <div className="relative z-10 text-xs text-teal-200 flex items-center gap-2">
+            <Radio className="w-4 h-4 text-emerald-400 animate-pulse" /> LoRa Mesh Hardware Control Center
           </div>
         </div>
 
         {/* RIGHT COLUMN: Authentication & Role Selection Form */}
         <div className="p-8 sm:p-12 flex flex-col justify-center space-y-6">
           {/* Quick Demo Credentials Bar */}
-          <div className="p-4 rounded-2xl bg-blue-50 border border-blue-100 space-y-2">
-            <span className="text-xs font-bold text-blue-900 uppercase block tracking-wider">
+          <div className="p-4 rounded-2xl bg-teal-50/70 border border-teal-200/60 space-y-2">
+            <span className="text-xs font-bold text-teal-900 uppercase block tracking-wider">
               Quick Demo Access (One-Click Login)
             </span>
             <div className="grid grid-cols-2 gap-2">

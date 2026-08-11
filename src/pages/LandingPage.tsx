@@ -1,9 +1,10 @@
 import React from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { LandingNavbar } from '../components/layout/LandingNavbar';
 import { HardwareNodeDiagram } from '../components/hardware/HardwareNodeDiagram';
 import { CorrosionSpecView } from '../components/hardware/CorrosionSpecView';
+import { BrandSplashLoader } from '../components/common/BrandSplashLoader';
 import { Button } from '../components/ui/Button';
 import { Badge } from '../components/ui/Badge';
 import {
@@ -25,14 +26,26 @@ import {
 
 export const LandingPage: React.FC = () => {
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = React.useState(true);
 
   return (
     <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-blue-500 selection:text-white">
+      {/* Brand Initial Entry Splash Loader */}
+      <AnimatePresence mode="wait">
+        {isLoading && (
+          <BrandSplashLoader
+            key="brand-splash"
+            onComplete={() => setIsLoading(false)}
+            duration={2000}
+          />
+        )}
+      </AnimatePresence>
+
       {/* Public Navbar */}
       <LandingNavbar />
 
       {/* Hero Section */}
-      <section className="relative pt-12 pb-20 lg:pt-16 lg:pb-28 bg-gradient-to-b from-blue-50/40 via-white to-white border-b border-slate-100">
+      <section className="relative pt-12 pb-20 lg:pt-16 lg:pb-28 bg-gradient-to-b from-teal-50/50 via-white to-white border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           {/* Top Hero Text */}
           <div className="text-center max-w-4xl mx-auto space-y-6">
@@ -40,9 +53,9 @@ export const LandingPage: React.FC = () => {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-extrabold uppercase tracking-wider"
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-teal-50 via-cyan-50 to-emerald-50 border border-teal-200/80 text-teal-800 text-xs font-extrabold uppercase tracking-wider shadow-xs"
             >
-              <Sparkles className="w-4 h-4 text-blue-600" /> Intelligent Monitoring for Smarter Salt Production
+              <Sparkles className="w-4 h-4 text-cyan-600 animate-pulse" /> Intelligent Monitoring for Smarter Salt Production
             </motion.div>
 
             <motion.h1
@@ -51,7 +64,7 @@ export const LandingPage: React.FC = () => {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 leading-[1.1]"
             >
-              Turn Every Salt Block Into An <span className="text-blue-600">Intelligent Production Zone.</span>
+              Turn Every Salt Block Into An <span className="animate-text-gradient">Intelligent Production Zone.</span>
             </motion.h1>
 
             <motion.p
@@ -87,14 +100,95 @@ export const LandingPage: React.FC = () => {
             </motion.div>
           </div>
 
-          {/* Hero Hardware Node Illustration */}
+          {/* Borderless Live Field Telemetry Text Ticker */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.96 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            id="platform"
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.35 }}
+            className="w-full py-3 border-y border-slate-200/80 overflow-hidden relative bg-slate-50/40"
           >
-            <HardwareNodeDiagram />
+            <div className="flex items-center gap-4">
+              <div className="flex items-center gap-2 animate-text-gradient font-black text-xs uppercase tracking-wider shrink-0">
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+                Live Telemetry
+              </div>
+
+              {/* Scrolling Text Content */}
+              <div className="overflow-hidden whitespace-nowrap w-full flex items-center">
+                <motion.div
+                  animate={{ x: ['0%', '-50%'] }}
+                  transition={{ repeat: Infinity, ease: 'linear', duration: 28 }}
+                  className="inline-flex items-center gap-8 text-xs font-semibold text-slate-600 font-mono tracking-tight"
+                >
+                  <span><strong className="text-slate-900">PAN A-01:</strong> 185 mS/cm EC • OPTIMAL SALINITY</span>
+                  <span className="text-slate-300">•</span>
+                  <span><strong className="text-slate-900">PAN A-02:</strong> 94.2% NaCl CRUST PURITY</span>
+                  <span className="text-slate-300">•</span>
+                  <span><strong className="text-slate-900">LORA MESH:</strong> 14 NODES ONLINE (100% HEALTHY)</span>
+                  <span className="text-slate-300">•</span>
+                  <span><strong className="text-slate-900">HARVEST WINDOW:</strong> 3.5 DAYS TO PEAK CRUST</span>
+                  <span className="text-slate-300">•</span>
+                  <span><strong className="text-slate-900">WEATHER SENSORS:</strong> 34.2°C AMBIENT • 0% DILUTION RISK</span>
+                  <span className="text-slate-300">•</span>
+                  {/* Duplicate set for seamless continuous looping */}
+                  <span><strong className="text-slate-900">PAN A-01:</strong> 185 mS/cm EC • OPTIMAL SALINITY</span>
+                  <span className="text-slate-300">•</span>
+                  <span><strong className="text-slate-900">PAN A-02:</strong> 94.2% NaCl CRUST PURITY</span>
+                  <span className="text-slate-300">•</span>
+                  <span><strong className="text-slate-900">LORA MESH:</strong> 14 NODES ONLINE (100% HEALTHY)</span>
+                  <span className="text-slate-300">•</span>
+                  <span><strong className="text-slate-900">HARVEST WINDOW:</strong> 3.5 DAYS TO PEAK CRUST</span>
+                  <span className="text-slate-300">•</span>
+                  <span><strong className="text-slate-900">WEATHER SENSORS:</strong> 34.2°C AMBIENT • 0% DILUTION RISK</span>
+                </motion.div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Hero Performance Metrics Bar */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            id="platform"
+            className="pt-4"
+          >
+            {/* Pure Typographic Performance Statistics Bar */}
+            <div className="pt-6 border-t border-slate-200/70">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center divide-x divide-slate-200/80">
+                <div className="space-y-1">
+                  <span className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight block">
+                    99.8<span className="animate-text-gradient">%</span>
+                  </span>
+                  <span className="text-xs font-extrabold text-slate-700 uppercase tracking-wider block">Salinity Precision</span>
+                  <span className="text-[11px] text-slate-500 block">Continuous EC compensation</span>
+                </div>
+
+                <div className="space-y-1 pl-4">
+                  <span className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight block">
+                    15 <span className="animate-text-gradient">km</span>
+                  </span>
+                  <span className="text-xs font-extrabold text-slate-700 uppercase tracking-wider block">LoRa Field Mesh</span>
+                  <span className="text-[11px] text-slate-500 block">Pan-to-gateway backhaul</span>
+                </div>
+
+                <div className="space-y-1 pl-4">
+                  <span className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight block">
+                    &lt; 45<span className="animate-text-gradient">s</span>
+                  </span>
+                  <span className="text-xs font-extrabold text-slate-700 uppercase tracking-wider block">Alert Latency</span>
+                  <span className="text-[11px] text-slate-500 block">Instant sluice gate triggers</span>
+                </div>
+
+                <div className="space-y-1 pl-4">
+                  <span className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight block">
+                    +24.5<span className="animate-text-gradient">%</span>
+                  </span>
+                  <span className="text-xs font-extrabold text-slate-700 uppercase tracking-wider block">Yield Boost</span>
+                  <span className="text-[11px] text-slate-500 block">AI harvest window timing</span>
+                </div>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
@@ -134,7 +228,7 @@ export const LandingPage: React.FC = () => {
             </div>
 
             <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold">
+              <div className="w-10 h-10 rounded-xl bg-teal-50 text-teal-600 flex items-center justify-center font-bold">
                 <Activity className="w-5 h-5" />
               </div>
               <h3 className="font-bold text-slate-900 text-base">Manual Field Inspection</h3>
@@ -177,7 +271,7 @@ export const LandingPage: React.FC = () => {
               { num: 5, name: 'ACT', desc: 'Operator Dashboard & Sluice Action' },
             ].map((s) => (
               <div key={s.num} className="p-5 rounded-2xl bg-slate-50 border border-slate-200 text-center space-y-2">
-                <span className="w-10 h-10 rounded-full bg-blue-600 text-white font-extrabold text-sm flex items-center justify-center mx-auto shadow-sm">
+                <span className="w-10 h-10 rounded-full bg-gradient-to-r from-teal-600 to-cyan-600 text-white font-extrabold text-sm flex items-center justify-center mx-auto shadow-md shadow-cyan-500/20">
                   {s.num}
                 </span>
                 <h4 className="font-extrabold text-slate-900 text-sm">{s.name}</h4>
@@ -185,6 +279,23 @@ export const LandingPage: React.FC = () => {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* DEDICATED HARDWARE ARCHITECTURE DEEP DIVE */}
+      <section id="hardware-architecture" className="py-20 bg-slate-50/70 border-b border-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          <div className="text-center max-w-2xl mx-auto space-y-3">
+            <Badge variant="blue" size="md">Hardware Architecture</Badge>
+            <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight">
+              Industrial Sensor Node Engineering
+            </h2>
+            <p className="text-slate-600 text-sm">
+              Purpose-built telemetry nodes for high-saline salt evaporation pans
+            </p>
+          </div>
+
+          <HardwareNodeDiagram />
         </div>
       </section>
 
@@ -203,7 +314,7 @@ export const LandingPage: React.FC = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs space-y-3">
-              <Zap className="w-8 h-8 text-blue-600" />
+              <Zap className="w-8 h-8 text-teal-600" />
               <h3 className="font-bold text-slate-900 text-base">EC / Salinity Probe</h3>
               <p className="text-xs text-slate-600 leading-relaxed">
                 Measures electrical conductivity (0–250 mS/cm) directly in saturated salt brine to track sodium chloride saturation.
@@ -219,7 +330,7 @@ export const LandingPage: React.FC = () => {
             </div>
 
             <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs space-y-3">
-              <Droplets className="w-8 h-8 text-sky-500" />
+              <Droplets className="w-8 h-8 text-cyan-500" />
               <h3 className="font-bold text-slate-900 text-base">Water-Level Probe</h3>
               <p className="text-xs text-slate-600 leading-relaxed">
                 Hydrostatic pressure sensor tracks millimeter-level pan water loss via solar evaporation.
@@ -227,7 +338,7 @@ export const LandingPage: React.FC = () => {
             </div>
 
             <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs space-y-3">
-              <CloudRain className="w-8 h-8 text-blue-500" />
+              <CloudRain className="w-8 h-8 text-teal-500" />
               <h3 className="font-bold text-slate-900 text-base">Weather Sensor Suite</h3>
               <p className="text-xs text-slate-600 leading-relaxed">
                 Integrated humidity, ambient temperature, and solar radiation sensors evaluate rain risk.
@@ -243,7 +354,7 @@ export const LandingPage: React.FC = () => {
             </div>
 
             <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs space-y-3">
-              <Radio className="w-8 h-8 text-blue-600" />
+              <Radio className="w-8 h-8 text-cyan-600" />
               <h3 className="font-bold text-slate-900 text-base">LoRa Mesh Node</h3>
               <p className="text-xs text-slate-600 leading-relaxed">
                 Ultra-low power 868MHz transmitter sends telemetry up to 15km backhaul to Gateway.
@@ -266,13 +377,13 @@ export const LandingPage: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
-              <BrainCircuit className="w-8 h-8 text-blue-600" />
+              <BrainCircuit className="w-8 h-8 text-teal-600" />
               <h3 className="font-extrabold text-slate-900 text-base">Salinity Estimation</h3>
               <p className="text-xs text-slate-600">Calculates precise sodium chloride saturation levels from temperature-compensated EC.</p>
             </div>
 
             <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
-              <Layers className="w-8 h-8 text-blue-600" />
+              <Layers className="w-8 h-8 text-cyan-600" />
               <h3 className="font-extrabold text-slate-900 text-base">5-Stage Crystallization Detection</h3>
               <p className="text-xs text-slate-600">Tracks progression from raw seawater brine to harvest-ready NaCl salt crust density.</p>
             </div>
@@ -317,7 +428,7 @@ export const LandingPage: React.FC = () => {
                 <div className="text-xs space-y-1">
                   <div className="flex justify-between">
                     <span className="text-slate-500">EC Level:</span>
-                    <span className="font-bold text-blue-600">{b.ec} mS/cm</span>
+                    <span className="font-bold text-teal-600">{b.ec} mS/cm</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-slate-500">Harvest Readiness:</span>
@@ -338,10 +449,11 @@ export const LandingPage: React.FC = () => {
       </section>
 
       {/* FINAL CTA */}
-      <section className="py-24 bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 text-white text-center">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 space-y-6">
+      <section className="py-24 bg-gradient-to-br from-teal-700 via-cyan-800 to-slate-900 text-white text-center relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-teal-400/20 via-transparent to-transparent pointer-events-none" />
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 space-y-6 relative z-10">
           <h2 className="text-3xl sm:text-5xl font-black tracking-tight">Make Every Salt Block Measurable.</h2>
-          <p className="text-blue-100 text-base max-w-xl mx-auto">
+          <p className="text-teal-100 text-base max-w-xl mx-auto">
             Connect hardware sensors, monitor crystallization, and optimize salt production harvest windows today.
           </p>
           <div className="pt-2">
@@ -349,8 +461,8 @@ export const LandingPage: React.FC = () => {
               onClick={() => navigate('/auth')}
               variant="secondary"
               size="lg"
-              className="bg-white text-blue-700 hover:bg-blue-50 shadow-xl"
-              rightIcon={<ArrowRight className="w-5 h-5" />}
+              className="bg-white text-teal-900 hover:bg-teal-50 shadow-xl border-none"
+              rightIcon={<ArrowRight className="w-5 h-5 text-teal-600" />}
             >
               Enter SmartSalt AI
             </Button>

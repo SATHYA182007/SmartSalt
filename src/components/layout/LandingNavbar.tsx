@@ -13,34 +13,28 @@ export const LandingNavbar: React.FC = () => {
 
   return (
     <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 sm:h-20 flex items-center justify-between">
         {/* Brand Logo */}
-        <Link to="/" className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white text-xl shadow-md shadow-blue-200">
-            🧂
-          </div>
-          <div className="flex flex-col">
-            <span className="font-extrabold text-slate-900 text-lg tracking-tight">
-              SmartSalt <span className="text-blue-600">AI</span>
-            </span>
-            <span className="text-[10px] font-semibold text-slate-500 uppercase tracking-widest">
-              Intelligent Salt Monitoring
-            </span>
-          </div>
+        <Link to="/" className="flex items-center py-1.5">
+          <img
+            src="/sslogo-transparent.png"
+            alt="SmartSalt AI"
+            className="h-13 sm:h-15 w-auto object-contain transition-transform hover:scale-105 drop-shadow-xs"
+          />
         </Link>
 
         {/* Desktop Nav Links */}
         <nav className="hidden md:flex items-center gap-8">
-          <a href="#platform" className="text-sm font-semibold text-slate-600 hover:text-blue-600 transition-colors">
+          <a href="#platform" className="text-sm font-semibold text-slate-600 hover:text-teal-600 transition-colors">
             Platform
           </a>
-          <Link to="/how-it-works" className="text-sm font-semibold text-slate-600 hover:text-blue-600 transition-colors">
+          <Link to="/how-it-works" className="text-sm font-semibold text-slate-600 hover:text-teal-600 transition-colors">
             How It Works
           </Link>
-          <a href="#hardware" className="text-sm font-semibold text-slate-600 hover:text-blue-600 transition-colors">
+          <a href="#hardware" className="text-sm font-semibold text-slate-600 hover:text-teal-600 transition-colors">
             Hardware
           </a>
-          <a href="#ai-intelligence" className="text-sm font-semibold text-slate-600 hover:text-blue-600 transition-colors">
+          <a href="#ai-intelligence" className="text-sm font-semibold text-slate-600 hover:text-teal-600 transition-colors">
             AI Intelligence
           </a>
         </nav>

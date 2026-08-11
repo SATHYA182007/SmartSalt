@@ -70,21 +70,13 @@ export const Sidebar: React.FC<SidebarProps> = ({ isMobileOpen, onMobileClose })
         } ${isMobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}`}
       >
         {/* Brand Header */}
-        <div className="h-16 px-5 flex items-center justify-between border-b border-slate-100">
-          <div className="flex items-center gap-3 overflow-hidden">
-            <div className="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white text-xl shadow-md shadow-blue-200 shrink-0">
-              🧂
-            </div>
-            {!isCollapsed && (
-              <div className="flex flex-col">
-                <span className="font-bold text-slate-900 text-base tracking-tight leading-tight">
-                  SmartSalt <span className="text-blue-600">AI</span>
-                </span>
-                <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">
-                  {role === 'admin' ? 'Infrastructure Portal' : 'Field Control Center'}
-                </span>
-              </div>
-            )}
+        <div className="h-20 px-4 flex items-center justify-between border-b border-slate-100">
+          <div className="flex items-center overflow-hidden py-1">
+            <img
+              src="/sslogo-transparent.png"
+              alt="SmartSalt AI"
+              className={`${isCollapsed ? 'h-10' : 'h-14'} w-auto object-contain shrink-0 transition-all`}
+            />
           </div>
 
           {/* Desktop Toggle Button */}
