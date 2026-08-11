@@ -277,11 +277,20 @@ export interface HistoricalDataPoint {
 
 export const sensorService = {
   getSaltBlocks(): SaltBlock[] {
+    const stored = localStorage.getItem('smartsalt_blocks');
+    if (stored) {
+      try {
+        const parsed = JSON.parse(stored);
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+      } catch {
+        // Fallback to INITIAL_BLOCKS
+      }
+    }
     return INITIAL_BLOCKS;
   },
 
   getBlockById(id: string): SaltBlock | undefined {
-    return INITIAL_BLOCKS.find((b) => b.id === id);
+    return this.getSaltBlocks().find((b) => b.id === id);
   },
 
   getLatestReading(blockId: string): SensorReading {

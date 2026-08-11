@@ -99,7 +99,10 @@ export const useAppStore = create<AppState>((set, get) => ({
   toggleLiveSimulation: () => set((state) => ({ isLiveSimulating: !state.isLiveSimulating })),
 
   addBlock: async (newBlock) => {
-    set((state) => ({ blocks: [newBlock, ...state.blocks] }));
+    const updatedBlocks = [newBlock, ...get().blocks];
+    set({ blocks: updatedBlocks });
+    localStorage.setItem('smartsalt_blocks', JSON.stringify(updatedBlocks));
+
     try {
       await supabase.from('salt_blocks').insert({
         id: newBlock.id,
@@ -121,9 +124,10 @@ export const useAppStore = create<AppState>((set, get) => ({
   },
 
   updateBlock: async (updatedBlock) => {
-    set((state) => ({
-      blocks: state.blocks.map((b) => (b.id === updatedBlock.id ? updatedBlock : b)),
-    }));
+    const updatedBlocks = get().blocks.map((b) => (b.id === updatedBlock.id ? updatedBlock : b));
+    set({ blocks: updatedBlocks });
+    localStorage.setItem('smartsalt_blocks', JSON.stringify(updatedBlocks));
+
     try {
       await supabase.from('salt_blocks').upsert({
         id: updatedBlock.id,
@@ -145,9 +149,10 @@ export const useAppStore = create<AppState>((set, get) => ({
   },
 
   deleteBlock: async (blockId) => {
-    set((state) => ({
-      blocks: state.blocks.filter((b) => b.id !== blockId),
-    }));
+    const updatedBlocks = get().blocks.filter((b) => b.id !== blockId);
+    set({ blocks: updatedBlocks });
+    localStorage.setItem('smartsalt_blocks', JSON.stringify(updatedBlocks));
+
     try {
       await supabase.from('salt_blocks').delete().eq('id', blockId);
     } catch {
@@ -157,12 +162,16 @@ export const useAppStore = create<AppState>((set, get) => ({
 
   acknowledgeAlert: (alertId) => {
     alertService.acknowledgeAlert(alertId);
-    set({ alerts: alertService.getAlerts() });
+    const updatedAlerts = alertService.getAlerts();
+    set({ alerts: updatedAlerts });
+    localStorage.setItem('smartsalt_alerts', JSON.stringify(updatedAlerts));
   },
 
   resolveAlert: (alertId) => {
     alertService.resolveAlert(alertId);
-    set({ alerts: alertService.getAlerts() });
+    const updatedAlerts = alertService.getAlerts();
+    set({ alerts: updatedAlerts });
+    localStorage.setItem('smartsalt_alerts', JSON.stringify(updatedAlerts));
   },
 
   markNotificationAsRead: (id) => {
