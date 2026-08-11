@@ -3,6 +3,7 @@ import { User, Role, SaltBlock, Alert, NotificationItem } from '../types';
 import { authService } from '../services/authService';
 import { sensorService } from '../services/sensorService';
 import { alertService } from '../services/alertService';
+import { supabase } from '../lib/supabase';
 
 interface AppState {
   user: User | null;
@@ -15,9 +16,13 @@ interface AppState {
   
   // Actions
   setUser: (user: User | null) => void;
+  updateUserProfile: (updatedFields: Partial<User>) => Promise<void>;
   setRole: (role: Role) => void;
   setSelectedBlockId: (id: string) => void;
   toggleLiveSimulation: () => void;
+  addBlock: (newBlock: SaltBlock) => Promise<void>;
+  updateBlock: (updatedBlock: SaltBlock) => Promise<void>;
+  deleteBlock: (blockId: string) => Promise<void>;
   acknowledgeAlert: (alertId: string) => void;
   resolveAlert: (alertId: string) => void;
   markNotificationAsRead: (notificationId: string) => void;
@@ -66,10 +71,89 @@ export const useAppStore = create<AppState>((set, get) => ({
   isLiveSimulating: true,
 
   setUser: (user) => set({ user, role: user ? user.role : 'operator' }),
+  
+  updateUserProfile: async (updatedFields) => {
+    const currentUser = get().user;
+    if (!currentUser) return;
+
+    const newUser: User = { ...currentUser, ...updatedFields };
+    set({ user: newUser });
+    localStorage.setItem('smartsalt_user', JSON.stringify(newUser));
+
+    try {
+      await supabase.from('profiles').upsert({
+        email: newUser.email,
+        full_name: newUser.name,
+        role: newUser.role,
+        organization: newUser.organization,
+        avatar_url: newUser.avatarUrl,
+      }, { onConflict: 'email' });
+    } catch {
+      // Graceful fallback
+    }
+  },
+
   setRole: (role) => set({ role }),
   setSelectedBlockId: (selectedBlockId) => set({ selectedBlockId }),
   
   toggleLiveSimulation: () => set((state) => ({ isLiveSimulating: !state.isLiveSimulating })),
+
+  addBlock: async (newBlock) => {
+    set((state) => ({ blocks: [newBlock, ...state.blocks] }));
+    try {
+      await supabase.from('salt_blocks').insert({
+        id: newBlock.id,
+        name: newBlock.name,
+        zone: newBlock.zone,
+        target_ec: newBlock.targetEc,
+        current_ec: newBlock.currentEc,
+        temp: newBlock.temp,
+        water_level: newBlock.waterLevel,
+        status: newBlock.status,
+        crystallization_stage: newBlock.crystallizationStage,
+        harvest_readiness: newBlock.harvestReadiness,
+        lat: newBlock.lat,
+        lng: newBlock.lng,
+      });
+    } catch {
+      // Graceful fallback
+    }
+  },
+
+  updateBlock: async (updatedBlock) => {
+    set((state) => ({
+      blocks: state.blocks.map((b) => (b.id === updatedBlock.id ? updatedBlock : b)),
+    }));
+    try {
+      await supabase.from('salt_blocks').upsert({
+        id: updatedBlock.id,
+        name: updatedBlock.name,
+        zone: updatedBlock.zone,
+        target_ec: updatedBlock.targetEc,
+        current_ec: updatedBlock.currentEc,
+        temp: updatedBlock.temp,
+        water_level: updatedBlock.waterLevel,
+        status: updatedBlock.status,
+        crystallization_stage: updatedBlock.crystallizationStage,
+        harvest_readiness: updatedBlock.harvestReadiness,
+        lat: updatedBlock.lat,
+        lng: updatedBlock.lng,
+      });
+    } catch {
+      // Graceful fallback
+    }
+  },
+
+  deleteBlock: async (blockId) => {
+    set((state) => ({
+      blocks: state.blocks.filter((b) => b.id !== blockId),
+    }));
+    try {
+      await supabase.from('salt_blocks').delete().eq('id', blockId);
+    } catch {
+      // Graceful fallback
+    }
+  },
 
   acknowledgeAlert: (alertId) => {
     alertService.acknowledgeAlert(alertId);
@@ -93,9 +177,7 @@ export const useAppStore = create<AppState>((set, get) => ({
     const { isLiveSimulating, blocks } = get();
     if (!isLiveSimulating) return;
 
-    // Perform minor realistic micro-drifts on salt blocks
     const updatedBlocks = blocks.map((b) => {
-      // Simulate minor evaporation drift (EC increases slightly, water level drops slightly)
       const ecDrift = Math.random() > 0.4 ? Number((Math.random() * 0.4).toFixed(1)) : -0.1;
       const tempDrift = Math.random() > 0.5 ? Number((Math.random() * 0.2 - 0.1).toFixed(1)) : 0;
       const waterDrift = Math.random() > 0.4 ? -0.05 : 0;
