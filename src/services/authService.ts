@@ -1,4 +1,5 @@
 import { User, Role } from '../types';
+import { supabase } from '../lib/supabase';
 
 export const DEMO_USERS: Record<Role, User> = {
   operator: {
@@ -6,7 +7,7 @@ export const DEMO_USERS: Record<Role, User> = {
     email: 'operator@smartsalt.ai',
     name: 'Carlos Ruiz',
     role: 'operator',
-    organization: 'Maris Salt Works Co.',
+    organization: 'Salinas del Atlántico',
     avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80',
     lastLogin: new Date().toISOString(),
   },
@@ -24,16 +25,26 @@ export const DEMO_USERS: Record<Role, User> = {
 export const authService = {
   DEMO_USERS,
   async login(email: string, role?: Role): Promise<User> {
-    // Simulate API delay
-    await new Promise((resolve) => setTimeout(resolve, 600));
+    const selectedRole = role || (email.includes('admin') ? 'admin' : 'operator');
+    let user = DEMO_USERS[selectedRole];
 
-    if (role === 'admin' || email.includes('admin')) {
-      const user = DEMO_USERS.admin;
-      localStorage.setItem('smartsalt_user', JSON.stringify(user));
-      return user;
+    try {
+      const { data } = await supabase.from('profiles').select('*').eq('email', email).single();
+      if (data) {
+        user = {
+          id: data.id,
+          email: data.email,
+          name: data.full_name,
+          role: data.role as Role,
+          organization: data.organization || 'Salinas del Atlántico',
+          avatarUrl: data.avatar_url || user.avatarUrl,
+          lastLogin: new Date().toISOString(),
+        };
+      }
+    } catch {
+      // Graceful fallback to DEMO_USERS
     }
 
-    const user = DEMO_USERS.operator;
     localStorage.setItem('smartsalt_user', JSON.stringify(user));
     return user;
   },

@@ -1,4 +1,5 @@
 import { Alert } from '../types';
+import { supabase } from '../lib/supabase';
 
 export const INITIAL_ALERTS: Alert[] = [
   {
@@ -77,13 +78,23 @@ export const alertService = {
     return alertsState.filter((a) => a.blockId === blockId);
   },
 
-  acknowledgeAlert(id: string): Alert | undefined {
+  async acknowledgeAlert(id: string): Promise<Alert | undefined> {
     alertsState = alertsState.map((a) => (a.id === id ? { ...a, status: 'ACKNOWLEDGED' as const } : a));
+    try {
+      await supabase.from('alerts').update({ status: 'ACKNOWLEDGED' }).eq('id', id);
+    } catch {
+      // Graceful fallback
+    }
     return alertsState.find((a) => a.id === id);
   },
 
-  resolveAlert(id: string): Alert | undefined {
+  async resolveAlert(id: string): Promise<Alert | undefined> {
     alertsState = alertsState.map((a) => (a.id === id ? { ...a, status: 'RESOLVED' as const } : a));
+    try {
+      await supabase.from('alerts').update({ status: 'RESOLVED' }).eq('id', id);
+    } catch {
+      // Graceful fallback
+    }
     return alertsState.find((a) => a.id === id);
   },
 };
