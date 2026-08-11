@@ -28,7 +28,9 @@ export const MonitoringPage: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white border border-slate-200/90 rounded-2xl p-6 shadow-xs">
         <div>
           <div className="flex items-center gap-3 mb-1">
-            <h1 className="text-2xl font-black text-slate-900">Live Telemetry — {activeBlock.name}</h1>
+            <h1 className="text-2xl font-black text-slate-900 tracking-tight">
+              Live Telemetry — <span className="text-gradient-green-blue text-effect-glow">{activeBlock.name}</span>
+            </h1>
             <LiveIndicator status="ONLINE" label="LIVE FEED" />
           </div>
           <p className="text-xs text-slate-500">{activeBlock.zone} • LoRa Node Telemetry Mesh</p>
@@ -40,7 +42,7 @@ export const MonitoringPage: React.FC = () => {
           <select
             value={selectedBlockId}
             onChange={(e) => setSelectedBlockId(e.target.value)}
-            className="px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-teal-500"
           >
             {blocks.map((b) => (
               <option key={b.id} value={b.id}>
@@ -57,16 +59,16 @@ export const MonitoringPage: React.FC = () => {
         <div className="bg-white border border-slate-200/90 rounded-2xl p-5 shadow-xs relative overflow-hidden">
           <div className="flex items-center justify-between text-slate-500 mb-2">
             <span className="text-xs font-bold uppercase tracking-wider">EC / Salinity</span>
-            <Zap className="w-4 h-4 text-blue-600" />
+            <Zap className="w-4 h-4 text-teal-600" />
           </div>
           <div className="flex items-baseline justify-between">
-            <span className="text-3xl font-black text-blue-600">{activeBlock.currentEc}</span>
+            <span className="text-3xl font-black text-gradient-green-blue">{activeBlock.currentEc}</span>
             <span className="text-xs font-bold text-slate-400">mS/cm</span>
           </div>
           <div className="mt-2 flex items-center gap-1 text-xs font-bold text-emerald-600">
             <TrendingUp className="w-4 h-4" /> ↑ Rising (+1.8 mS/h)
           </div>
-          <p className="text-[11px] text-slate-600 mt-2 bg-blue-50/60 p-2 rounded-lg border border-blue-100">
+          <p className="text-[11px] text-slate-600 mt-2 bg-teal-50/60 p-2 rounded-lg border border-teal-100">
             <strong className="text-slate-900">Why this matters:</strong> Brine concentration is increasing toward target sodium chloride crystallization density.
           </p>
         </div>
@@ -93,13 +95,13 @@ export const MonitoringPage: React.FC = () => {
         <div className="bg-white border border-slate-200/90 rounded-2xl p-5 shadow-xs">
           <div className="flex items-center justify-between text-slate-500 mb-2">
             <span className="text-xs font-bold uppercase tracking-wider">Water Level</span>
-            <Droplets className="w-4 h-4 text-sky-500" />
+            <Droplets className="w-4 h-4 text-cyan-600" />
           </div>
           <div className="flex items-baseline justify-between">
             <span className="text-3xl font-black text-slate-900">{activeBlock.waterLevel}</span>
             <span className="text-xs font-bold text-slate-400">cm</span>
           </div>
-          <div className="mt-2 flex items-center gap-1 text-xs font-bold text-blue-600">
+          <div className="mt-2 flex items-center gap-1 text-xs font-bold text-teal-600">
             <TrendingDown className="w-4 h-4" /> ↓ Falling (-0.4 cm/day)
           </div>
           <p className="text-[11px] text-slate-600 mt-2 bg-slate-50 p-2 rounded-lg border border-slate-200">
@@ -149,13 +151,13 @@ export const MonitoringPage: React.FC = () => {
 
         <div className="p-4 rounded-xl bg-white border border-slate-200 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <Wifi className="w-5 h-5 text-blue-600" />
+            <Wifi className="w-5 h-5 text-teal-600" />
             <div>
               <span className="text-xs font-bold text-slate-900 block">LoRa Signal Strength</span>
               <span className="text-[11px] text-slate-500">Gateway Link Margin (RSSI)</span>
             </div>
           </div>
-          <span className="text-base font-extrabold text-blue-600">{reading.signalStrength} dBm</span>
+          <span className="text-base font-extrabold text-teal-600">{reading.signalStrength} dBm</span>
         </div>
 
         <div className="p-4 rounded-xl bg-white border border-slate-200 flex items-center justify-between">

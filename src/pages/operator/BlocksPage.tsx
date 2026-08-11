@@ -23,7 +23,9 @@ export const BlocksPage: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-extrabold text-slate-900">Salt Evaporation Blocks</h1>
+          <h1 className="text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
+            <span className="text-gradient-green-blue text-effect-glow">Salt Evaporation Blocks</span>
+          </h1>
           <p className="text-xs text-slate-500">
             Spatial monitoring & block selection across North, Central and South production zones
           </p>
@@ -38,14 +40,14 @@ export const BlocksPage: React.FC = () => {
               placeholder="Search block or zone..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-9 pr-4 py-2 bg-white border border-slate-200 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-blue-500 w-48 sm:w-64"
+              className="pl-9 pr-4 py-2 bg-white border border-slate-200 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-teal-500 w-48 sm:w-64"
             />
           </div>
 
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value as any)}
-            className="px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs font-semibold text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs font-semibold text-slate-700 focus:outline-none focus:ring-2 focus:ring-teal-500"
           >
             <option value="ALL">All Statuses</option>
             <option value="NORMAL">Normal</option>
@@ -74,12 +76,12 @@ export const BlocksPage: React.FC = () => {
                 key={block.id}
                 onClick={() => setSelectedBlockId(block.id)}
                 className={`bg-white border rounded-2xl p-5 shadow-xs transition-all hover:shadow-md cursor-pointer ${
-                  isSelected ? 'border-blue-600 ring-2 ring-blue-500/20' : 'border-slate-200'
+                  isSelected ? 'border-teal-500 ring-2 ring-teal-500/20' : 'border-slate-200'
                 }`}
               >
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center gap-2">
-                    <span className="w-8 h-8 rounded-xl bg-blue-600 text-white font-extrabold text-xs flex items-center justify-center">
+                    <span className="w-8 h-8 rounded-xl bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 text-white font-extrabold text-xs flex items-center justify-center shadow-xs">
                       {block.id}
                     </span>
                     <div>
@@ -104,7 +106,7 @@ export const BlocksPage: React.FC = () => {
                 <div className="grid grid-cols-3 gap-2 py-3 border-y border-slate-100 my-3 text-center">
                   <div>
                     <span className="text-[10px] text-slate-400 font-semibold block uppercase">EC Level</span>
-                    <span className="text-sm font-extrabold text-blue-600">{block.currentEc} mS/cm</span>
+                    <span className="text-sm font-extrabold text-teal-600">{block.currentEc} mS/cm</span>
                   </div>
                   <div>
                     <span className="text-[10px] text-slate-400 font-semibold block uppercase">Brine Temp</span>
@@ -112,7 +114,7 @@ export const BlocksPage: React.FC = () => {
                   </div>
                   <div>
                     <span className="text-[10px] text-slate-400 font-semibold block uppercase">Harvest Ready</span>
-                    <span className="text-sm font-extrabold text-blue-600">{block.harvestReadiness}%</span>
+                    <span className="text-sm font-extrabold text-gradient-green-blue">{block.harvestReadiness}%</span>
                   </div>
                 </div>
 
@@ -129,7 +131,7 @@ export const BlocksPage: React.FC = () => {
                       }}
                       variant="ghost"
                       size="sm"
-                      leftIcon={<Activity className="w-3.5 h-3.5 text-blue-600" />}
+                      leftIcon={<Activity className="w-3.5 h-3.5 text-teal-600" />}
                     >
                       Monitor
                     </Button>
@@ -141,7 +143,7 @@ export const BlocksPage: React.FC = () => {
                       }}
                       variant="secondary"
                       size="sm"
-                      leftIcon={<BrainCircuit className="w-3.5 h-3.5 text-blue-600" />}
+                      leftIcon={<BrainCircuit className="w-3.5 h-3.5 text-teal-600" />}
                     >
                       AI
                     </Button>

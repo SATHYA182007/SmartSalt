@@ -45,7 +45,7 @@ export const OperatorAlertsPage: React.FC = () => {
       case 'LOW_BATTERY':
         return <BatteryCharging className="w-5 h-5 text-rose-600" />;
       case 'CONNECTIVITY':
-        return <Wifi className="w-5 h-5 text-blue-600" />;
+        return <Wifi className="w-5 h-5 text-teal-600" />;
       default:
         return <AlertTriangle className="w-5 h-5 text-amber-600" />;
     }
@@ -66,7 +66,9 @@ export const OperatorAlertsPage: React.FC = () => {
             <Bell className="w-6 h-6" />
           </div>
           <div>
-            <h1 className="text-2xl font-extrabold text-slate-900">Hardware & Field Alerts</h1>
+            <h1 className="text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
+              <span className="text-gradient-green-blue text-effect-glow">Hardware & Field Alerts</span>
+            </h1>
             <p className="text-xs text-slate-500">
               Hardware sensor diagnostics, salinity drop alerts, rain risk notifications & battery telemetry
             </p>
@@ -135,7 +137,7 @@ export const OperatorAlertsPage: React.FC = () => {
                     >
                       {alert.severity}
                     </Badge>
-                    <span className="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full border border-blue-100">
+                    <span className="text-xs font-bold text-teal-700 bg-teal-50 px-2 py-0.5 rounded-full border border-teal-100">
                       {alert.blockName}
                     </span>
                   </div>
@@ -208,9 +210,9 @@ export const OperatorAlertsPage: React.FC = () => {
               <p className="text-sm font-semibold text-slate-900">{selectedAlert.description}</p>
             </div>
 
-            <div className="p-4 rounded-xl bg-blue-50 border border-blue-100 space-y-2">
-              <span className="text-xs font-bold text-blue-800 uppercase block">Recommended Field Action</span>
-              <p className="text-sm font-semibold text-blue-900">{selectedAlert.recommendedAction}</p>
+            <div className="p-4 rounded-xl bg-teal-50 border border-teal-100 space-y-2">
+              <span className="text-xs font-bold text-teal-800 uppercase block">Recommended Field Action</span>
+              <p className="text-sm font-semibold text-teal-950">{selectedAlert.recommendedAction}</p>
             </div>
 
             <div className="flex justify-end gap-3 pt-2">

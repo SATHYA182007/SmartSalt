@@ -21,7 +21,7 @@ export const StageTracker: React.FC<StageTrackerProps> = ({ currentStageNumber }
         <div className="overflow-hidden h-2.5 mb-4 text-xs flex rounded-full bg-slate-100 border border-slate-200">
           <div
             style={{ width: `${(currentStageNumber / 5) * 100}%` }}
-            className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-600 transition-all duration-500 ease-out"
+            className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 transition-all duration-500 ease-out"
           />
         </div>
 
@@ -36,9 +36,9 @@ export const StageTracker: React.FC<StageTrackerProps> = ({ currentStageNumber }
                 <div
                   className={`w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all ${
                     isPassed
-                      ? 'bg-blue-600 text-white shadow-xs'
+                      ? 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-xs'
                       : isCurrent
-                      ? 'bg-blue-600 text-white ring-2 sm:ring-4 ring-blue-100 shadow-md scale-105 sm:scale-110'
+                      ? 'bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 text-white ring-2 sm:ring-4 ring-teal-100 shadow-md scale-105 sm:scale-110'
                       : 'bg-slate-100 text-slate-400 border border-slate-200'
                   }`}
                 >
@@ -46,7 +46,7 @@ export const StageTracker: React.FC<StageTrackerProps> = ({ currentStageNumber }
                 </div>
                 <span
                   className={`mt-1.5 text-[10px] sm:text-xs font-semibold truncate w-full ${
-                    isCurrent ? 'text-blue-600 font-bold' : isPassed ? 'text-slate-900' : 'text-slate-400'
+                    isCurrent ? 'text-teal-600 font-bold' : isPassed ? 'text-slate-900' : 'text-slate-400'
                   }`}
                 >
                   {s.title}

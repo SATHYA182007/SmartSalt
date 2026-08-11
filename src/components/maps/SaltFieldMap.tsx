@@ -16,7 +16,7 @@ export const SaltFieldMap: React.FC<SaltFieldMapProps> = ({ blocks, selectedBloc
   const selectedBlock = blocks.find((b) => b.id === selectedBlockId) || blocks[2];
 
   const getStatusColor = (status: SaltBlock['status'], isSelected: boolean) => {
-    if (isSelected) return 'border-blue-600 bg-blue-50/90 shadow-md shadow-blue-100 ring-2 ring-blue-500';
+    if (isSelected) return 'border-teal-500 bg-teal-50/90 shadow-md shadow-teal-100 ring-2 ring-teal-500';
     if (status === 'ACTION_REQUIRED') return 'border-rose-300 bg-rose-50/60 hover:bg-rose-50';
     if (status === 'MONITORING') return 'border-amber-300 bg-amber-50/60 hover:bg-amber-50';
     return 'border-emerald-200 bg-emerald-50/40 hover:bg-emerald-50';
@@ -34,10 +34,10 @@ export const SaltFieldMap: React.FC<SaltFieldMapProps> = ({ blocks, selectedBloc
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-4">
         <div>
           <div className="flex items-center gap-2">
-            <h2 className="text-base sm:text-lg font-bold text-slate-900">
-              Interactive Salt Evaporation Pan Map
+            <h2 className="text-base sm:text-lg font-black text-slate-900 tracking-tight">
+              <span className="text-gradient-green-blue">Interactive Salt Evaporation Pan Map</span>
             </h2>
-            <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">
+            <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-teal-50 text-teal-800 border border-teal-200">
               12 Active Pans
             </span>
           </div>
@@ -54,7 +54,7 @@ export const SaltFieldMap: React.FC<SaltFieldMapProps> = ({ blocks, selectedBloc
               onClick={() => setViewMode('map')}
               className={`px-3 py-1.5 rounded-lg text-xs font-extrabold flex items-center gap-1.5 transition-all ${
                 viewMode === 'map'
-                  ? 'bg-blue-600 text-white shadow-xs'
+                  ? 'bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 text-white shadow-xs'
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
@@ -64,7 +64,7 @@ export const SaltFieldMap: React.FC<SaltFieldMapProps> = ({ blocks, selectedBloc
               onClick={() => setViewMode('grid')}
               className={`px-3 py-1.5 rounded-lg text-xs font-extrabold flex items-center gap-1.5 transition-all ${
                 viewMode === 'grid'
-                  ? 'bg-blue-600 text-white shadow-xs'
+                  ? 'bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 text-white shadow-xs'
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
@@ -110,7 +110,7 @@ export const SaltFieldMap: React.FC<SaltFieldMapProps> = ({ blocks, selectedBloc
                 )}`}
               >
                 {isSelected && (
-                  <div className="absolute top-2 right-2 w-2 h-2 rounded-full bg-blue-600 animate-ping" />
+                  <div className="absolute top-2 right-2 w-2 h-2 rounded-full bg-teal-500 animate-ping" />
                 )}
 
                 <div className="flex items-center justify-between mb-2">
@@ -125,7 +125,7 @@ export const SaltFieldMap: React.FC<SaltFieldMapProps> = ({ blocks, selectedBloc
                 <div className="space-y-1.5 text-xs border-t border-slate-200/50 pt-2">
                   <div className="flex items-center justify-between">
                     <span className="text-slate-500 flex items-center gap-1">
-                      <Zap className="w-3 h-3 text-blue-500" /> Salinity EC
+                      <Zap className="w-3 h-3 text-teal-600" /> Salinity EC
                     </span>
                     <span className="font-bold text-slate-900">{block.currentEc} mS/cm</span>
                   </div>
@@ -137,9 +137,9 @@ export const SaltFieldMap: React.FC<SaltFieldMapProps> = ({ blocks, selectedBloc
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-slate-500 flex items-center gap-1">
-                      <Droplets className="w-3 h-3 text-sky-500" /> Harvest
+                      <Droplets className="w-3 h-3 text-cyan-600" /> Harvest
                     </span>
-                    <span className="font-bold text-blue-600">{block.harvestReadiness}%</span>
+                    <span className="font-bold text-teal-600">{block.harvestReadiness}%</span>
                   </div>
                 </div>
               </motion.div>
@@ -152,7 +152,7 @@ export const SaltFieldMap: React.FC<SaltFieldMapProps> = ({ blocks, selectedBloc
       {selectedBlock && (
         <div className="bg-slate-50 rounded-xl p-4 border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-blue-600 text-white font-extrabold flex items-center justify-center text-sm shadow-sm shrink-0">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-extrabold flex items-center justify-center text-sm shadow-sm shrink-0">
               {selectedBlock.id}
             </div>
             <div>
@@ -171,7 +171,7 @@ export const SaltFieldMap: React.FC<SaltFieldMapProps> = ({ blocks, selectedBloc
           <div className="flex items-center gap-3 self-end md:self-auto shrink-0">
             <div className="text-right text-xs">
               <span className="block text-slate-400">Current Brine Density</span>
-              <span className="font-extrabold text-blue-600 text-base">{selectedBlock.currentEc} mS/cm</span>
+              <span className="font-extrabold text-teal-600 text-base">{selectedBlock.currentEc} mS/cm</span>
             </div>
           </div>
         </div>

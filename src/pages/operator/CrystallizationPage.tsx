@@ -23,11 +23,13 @@ export const CrystallizationPage: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white border border-slate-200/90 rounded-2xl p-6 shadow-xs">
         <div className="flex items-center gap-3">
-          <div className="p-3 rounded-2xl bg-blue-600 text-white shadow-md shadow-blue-200">
+          <div className="p-3 rounded-2xl bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 text-white shadow-md shadow-teal-500/25">
             <Eye className="w-6 h-6" />
           </div>
           <div>
-            <h1 className="text-2xl font-extrabold text-slate-900">Camera & Crystal Formation AI</h1>
+            <h1 className="text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
+              <span className="text-gradient-green-blue text-effect-glow">Camera & Crystal Formation AI</span>
+            </h1>
             <p className="text-xs text-slate-500">
               Optical vision monitoring of NaCl crystal coverage, crust density, and saturation state
             </p>
@@ -39,7 +41,7 @@ export const CrystallizationPage: React.FC = () => {
           <select
             value={selectedBlockId}
             onChange={(e) => setSelectedBlockId(e.target.value)}
-            className="px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-teal-500"
           >
             {blocks.map((b) => (
               <option key={b.id} value={b.id}>
@@ -51,7 +53,7 @@ export const CrystallizationPage: React.FC = () => {
             onClick={handleReanalyze}
             isLoading={isAnalyzing}
             variant="secondary"
-            leftIcon={<RefreshCw className="w-4 h-4" />}
+            leftIcon={<RefreshCw className="w-4 h-4 text-teal-600" />}
           >
             Re-Analyze Image
           </Button>
@@ -64,7 +66,7 @@ export const CrystallizationPage: React.FC = () => {
         <div className="lg:col-span-2 bg-white border border-slate-200/90 rounded-2xl p-6 shadow-xs space-y-4">
           <div className="flex items-center justify-between border-b border-slate-100 pb-3">
             <div className="flex items-center gap-2">
-              <Camera className="w-4 h-4 text-blue-600" />
+              <Camera className="w-4 h-4 text-teal-600" />
               <span className="font-bold text-slate-900 text-sm">
                 Optical Vision Submersible Camera Feed ({activeBlock.name})
               </span>
@@ -87,7 +89,7 @@ export const CrystallizationPage: React.FC = () => {
             />
 
             {/* AI Grid Scan Overlay Lines */}
-            <div className="absolute inset-0 bg-[linear-gradient(to_right,#3b82f6_1px,transparent_1px),linear-gradient(to_bottom,#3b82f6_1px,transparent_1px)] bg-[size:40px_40px] opacity-20 pointer-events-none" />
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#0d9488_1px,transparent_1px),linear-gradient(to_bottom,#0d9488_1px,transparent_1px)] bg-[size:40px_40px] opacity-25 pointer-events-none" />
 
             {/* AI Optical Detection Bounding Boxes */}
             <div className="absolute top-1/4 left-1/4 w-1/3 h-1/2 border-2 border-dashed border-emerald-400 bg-emerald-500/10 rounded-lg p-2 flex flex-col justify-between pointer-events-none">
@@ -97,8 +99,8 @@ export const CrystallizationPage: React.FC = () => {
               <span className="text-[10px] text-emerald-300 font-mono text-right">Confidence: 91%</span>
             </div>
 
-            <div className="absolute bottom-6 right-8 w-1/4 h-1/3 border-2 border-dashed border-blue-400 bg-blue-500/10 rounded-lg p-2 pointer-events-none">
-              <span className="bg-blue-600 text-white text-[10px] font-mono font-bold px-1.5 py-0.5 rounded">
+            <div className="absolute bottom-6 right-8 w-1/4 h-1/3 border-2 border-dashed border-teal-400 bg-teal-500/10 rounded-lg p-2 pointer-events-none">
+              <span className="bg-gradient-to-r from-teal-600 to-cyan-600 text-white text-[10px] font-mono font-bold px-1.5 py-0.5 rounded">
                 Active Saturated Brine
               </span>
             </div>
@@ -130,14 +132,14 @@ export const CrystallizationPage: React.FC = () => {
           {/* Key Vision Metrics */}
           <div className="bg-white border border-slate-200/90 rounded-2xl p-5 shadow-xs space-y-4">
             <div className="flex items-center gap-2 border-b border-slate-100 pb-3">
-              <Sparkles className="w-4 h-4 text-blue-600" />
+              <Sparkles className="w-4 h-4 text-teal-600" />
               <h3 className="font-bold text-slate-900 text-sm">Visual AI Analysis</h3>
             </div>
 
             <div className="space-y-3">
               <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between">
                 <span className="text-xs font-semibold text-slate-600">Crystal Coverage</span>
-                <span className="text-lg font-black text-blue-600">78%</span>
+                <span className="text-lg font-black text-teal-600">78%</span>
               </div>
 
               <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between">
@@ -145,9 +147,9 @@ export const CrystallizationPage: React.FC = () => {
                 <span className="text-base font-extrabold text-emerald-600">91%</span>
               </div>
 
-              <div className="p-3 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-between">
-                <span className="text-xs font-bold text-blue-800">Harvest Readiness Score</span>
-                <span className="text-xl font-black text-blue-600">{activeBlock.harvestReadiness}%</span>
+              <div className="p-3 rounded-xl bg-teal-50 border border-teal-200 flex items-center justify-between">
+                <span className="text-xs font-bold text-teal-800">Harvest Readiness Score</span>
+                <span className="text-xl font-black text-gradient-green-blue">{activeBlock.harvestReadiness}%</span>
               </div>
             </div>
           </div>

@@ -22,8 +22,8 @@ export const CorrosionSpecView: React.FC = () => {
   return (
     <div className="bg-white border border-slate-200/90 rounded-3xl p-6 sm:p-8 shadow-xs space-y-6">
       <div className="text-center max-w-2xl mx-auto space-y-2">
-        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-bold border border-blue-200">
-          <ShieldCheck className="w-4 h-4 text-blue-600" /> Corrosion-Resistant Engineering
+        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-teal-50/80 text-teal-800 text-xs font-bold border border-teal-200/80 shadow-xs">
+          <ShieldCheck className="w-4 h-4 text-teal-600" /> Corrosion-Resistant Engineering
         </span>
         <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
           Electronics Stay Isolated From The Brine.
@@ -38,7 +38,7 @@ export const CorrosionSpecView: React.FC = () => {
         <div className="grid grid-cols-1 sm:grid-cols-5 gap-3 relative">
           {steps.map((step, idx) => (
             <div key={idx} className="relative flex flex-col items-center text-center p-4 rounded-2xl bg-slate-50 border border-slate-200">
-              <div className="w-8 h-8 rounded-full bg-blue-600 text-white font-bold text-xs flex items-center justify-center mb-2 shadow-xs">
+              <div className="w-8 h-8 rounded-full bg-gradient-to-r from-teal-600 to-cyan-600 text-white font-extrabold text-xs flex items-center justify-center mb-2 shadow-md shadow-cyan-500/20">
                 {idx + 1}
               </div>
               <span className="font-bold text-xs text-slate-900 leading-tight mb-1">{step.label}</span>
@@ -52,7 +52,7 @@ export const CorrosionSpecView: React.FC = () => {
       <div className="pt-4 border-t border-slate-100 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
         {highlights.map((item, idx) => (
           <div key={idx} className="flex items-center gap-2.5 p-3 rounded-xl bg-slate-50/70 border border-slate-200/60">
-            <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0" />
+            <CheckCircle2 className="w-4 h-4 text-teal-600 shrink-0" />
             <span className="text-xs font-semibold text-slate-700">{item}</span>
           </div>
         ))}

@@ -53,21 +53,35 @@ export const AuthPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center p-4 sm:p-6 lg:p-8 font-sans relative">
+    <div className="min-h-screen relative flex flex-col items-center justify-center p-4 sm:p-6 lg:p-8 font-sans overflow-hidden bg-slate-900">
+      {/* Full Page Salt Field Background Image Layer */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105"
+        style={{ backgroundImage: `url('/salt-field-bg.png')` }}
+      />
+      {/* Dark gradient & subtle glass overlay for sharp visual hierarchy */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-950/80 via-teal-950/65 to-slate-950/85 backdrop-blur-[3px]" />
+
       {/* Back to Landing Page Floating Button */}
-      <div className="w-full max-w-5xl mb-4 flex items-center justify-between">
+      <div className="relative z-10 w-full max-w-5xl mb-4 flex items-center justify-between">
         <button
           onClick={() => navigate('/')}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white border border-slate-200 hover:bg-slate-100 text-slate-700 text-xs font-bold transition-all shadow-xs group"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/90 backdrop-blur-md border border-white/50 hover:bg-white text-slate-800 text-xs font-bold transition-all shadow-lg shadow-slate-950/20 group"
         >
-          <ArrowLeft className="w-4 h-4 text-blue-600 group-hover:-translate-x-0.5 transition-transform" />
+          <ArrowLeft className="w-4 h-4 text-teal-600 group-hover:-translate-x-0.5 transition-transform" />
           <span>Back to Landing Page</span>
         </button>
       </div>
 
-      <div className="w-full max-w-5xl bg-white border border-slate-200 rounded-3xl shadow-xl overflow-hidden grid grid-cols-1 lg:grid-cols-2">
+      <div className="relative z-10 w-full max-w-5xl bg-white/95 backdrop-blur-xl border border-white/60 rounded-3xl shadow-2xl shadow-slate-950/40 overflow-hidden grid grid-cols-1 lg:grid-cols-2">
         {/* LEFT COLUMN: SmartSalt AI Branding & Visual */}
-        <div className="bg-gradient-to-br from-teal-700 via-cyan-800 to-slate-900 p-8 sm:p-12 text-white flex flex-col justify-between relative overflow-hidden">
+        <div className="relative p-8 sm:p-12 text-white flex flex-col justify-between overflow-hidden bg-slate-900">
+          {/* Salt Field Image Background in Left Panel */}
+          <div 
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-110"
+            style={{ backgroundImage: `url('/salt-field-bg.png')` }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-emerald-950/90 via-teal-900/85 to-slate-950/90" />
           <div className="absolute top-0 right-0 w-64 h-64 bg-teal-400/20 rounded-full blur-3xl pointer-events-none" />
 
           {/* Logo Header */}
@@ -114,16 +128,16 @@ export const AuthPage: React.FC = () => {
               <button
                 type="button"
                 onClick={() => handleQuickLogin('operator')}
-                className="p-2.5 rounded-xl bg-white border border-blue-200 hover:bg-blue-600 hover:text-white text-blue-700 text-xs font-bold transition-all shadow-xs flex items-center justify-center gap-1.5"
+                className="p-2.5 rounded-xl bg-white border border-teal-200 hover:bg-gradient-to-r hover:from-emerald-600 hover:to-teal-600 hover:text-white text-teal-700 text-xs font-bold transition-all shadow-xs flex items-center justify-center gap-1.5"
               >
                 <UserCheck className="w-4 h-4" /> Field Operator
               </button>
               <button
                 type="button"
                 onClick={() => handleQuickLogin('admin')}
-                className="p-2.5 rounded-xl bg-white border border-blue-200 hover:bg-slate-900 hover:text-white text-slate-800 text-xs font-bold transition-all shadow-xs flex items-center justify-center gap-1.5"
+                className="p-2.5 rounded-xl bg-white border border-teal-200 hover:bg-slate-900 hover:text-white text-slate-800 text-xs font-bold transition-all shadow-xs flex items-center justify-center gap-1.5"
               >
-                <ShieldCheck className="w-4 h-4" /> System Admin
+                <ShieldCheck className="w-4 h-4 text-teal-600" /> System Admin
               </button>
             </div>
           </div>
@@ -134,7 +148,7 @@ export const AuthPage: React.FC = () => {
               onClick={() => setActiveTab('signin')}
               className={`pb-3 px-4 border-b-2 transition-all ${
                 activeTab === 'signin'
-                  ? 'border-blue-600 text-blue-600'
+                  ? 'border-teal-600 text-teal-700'
                   : 'border-transparent text-slate-400 hover:text-slate-600'
               }`}
             >
@@ -144,7 +158,7 @@ export const AuthPage: React.FC = () => {
               onClick={() => setActiveTab('signup')}
               className={`pb-3 px-4 border-b-2 transition-all ${
                 activeTab === 'signup'
-                  ? 'border-blue-600 text-blue-600'
+                  ? 'border-teal-600 text-teal-700'
                   : 'border-transparent text-slate-400 hover:text-slate-600'
               }`}
             >
@@ -165,7 +179,7 @@ export const AuthPage: React.FC = () => {
                     placeholder="Carlos Ruiz"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="w-full pl-9 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full pl-9 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium focus:outline-none focus:ring-2 focus:ring-teal-500"
                   />
                 </div>
               </div>
@@ -181,7 +195,7 @@ export const AuthPage: React.FC = () => {
                   placeholder="operator@smartsalt.ai"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full pl-9 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full pl-9 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium focus:outline-none focus:ring-2 focus:ring-teal-500"
                 />
               </div>
             </div>
@@ -196,7 +210,7 @@ export const AuthPage: React.FC = () => {
                   placeholder="••••••••"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full pl-9 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full pl-9 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium focus:outline-none focus:ring-2 focus:ring-teal-500"
                 />
               </div>
             </div>
@@ -212,7 +226,7 @@ export const AuthPage: React.FC = () => {
                     placeholder="••••••••"
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
-                    className="w-full pl-9 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full pl-9 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium focus:outline-none focus:ring-2 focus:ring-teal-500"
                   />
                 </div>
               </div>
@@ -226,7 +240,7 @@ export const AuthPage: React.FC = () => {
                   onClick={() => setSelectedRole('operator')}
                   className={`p-3 rounded-xl border cursor-pointer transition-all ${
                     selectedRole === 'operator' || (!selectedRole && !email.includes('admin'))
-                      ? 'border-blue-600 bg-blue-50/80 ring-2 ring-blue-500/20'
+                      ? 'border-teal-500 bg-teal-50/80 ring-2 ring-teal-500/20'
                       : 'border-slate-200 bg-white hover:bg-slate-50'
                   }`}
                 >
@@ -238,7 +252,7 @@ export const AuthPage: React.FC = () => {
                   onClick={() => setSelectedRole('admin')}
                   className={`p-3 rounded-xl border cursor-pointer transition-all ${
                     selectedRole === 'admin' || email.includes('admin')
-                      ? 'border-blue-600 bg-blue-50/80 ring-2 ring-blue-500/20'
+                      ? 'border-teal-500 bg-teal-50/80 ring-2 ring-teal-500/20'
                       : 'border-slate-200 bg-white hover:bg-slate-50'
                   }`}
                 >

@@ -22,7 +22,9 @@ export const SensorDetailPage: React.FC = () => {
           Back
         </Button>
         <div>
-          <h1 className="text-2xl font-extrabold text-slate-900">{node.nodeName} ({node.id})</h1>
+          <h1 className="text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
+            <span className="text-gradient-green-blue text-effect-glow">{node.nodeName} ({node.id})</span>
+          </h1>
           <p className="text-xs text-slate-500">Node ID: {node.id} • Deployed in {node.blockName}</p>
         </div>
       </div>
@@ -35,7 +37,7 @@ export const SensorDetailPage: React.FC = () => {
             <Badge variant={node.status === 'ONLINE' ? 'success' : 'danger'} size="md">
               {node.status}
             </Badge>
-            <Radio className="w-5 h-5 text-blue-600" />
+            <Radio className="w-5 h-5 text-teal-600" />
           </div>
           <span className="text-[10px] text-slate-500 mt-2 block">IP67 Enclosure Seal: {node.ip67Status}</span>
         </div>
@@ -52,8 +54,8 @@ export const SensorDetailPage: React.FC = () => {
         <div className="bg-white border border-slate-200/90 rounded-2xl p-5 shadow-xs">
           <span className="text-xs text-slate-400 font-semibold block uppercase">LoRa Link RSSI</span>
           <div className="mt-1 flex items-center justify-between">
-            <span className="text-2xl font-black text-blue-600">{node.signalDbm} dBm</span>
-            <Wifi className="w-5 h-5 text-blue-600" />
+            <span className="text-2xl font-black text-teal-600">{node.signalDbm} dBm</span>
+            <Wifi className="w-5 h-5 text-teal-600" />
           </div>
           <span className="text-[10px] text-slate-500 mt-2 block">Quality: {node.signalQuality}</span>
         </div>
@@ -75,7 +77,7 @@ export const SensorDetailPage: React.FC = () => {
         <h3 className="text-base font-bold text-slate-900">Active Integrated Probes</h3>
         <div className="flex flex-wrap gap-2">
           {node.sensorTypes.map((type) => (
-            <span key={type} className="px-3 py-1.5 rounded-xl bg-blue-50 text-blue-700 font-bold text-xs border border-blue-200">
+            <span key={type} className="px-3 py-1.5 rounded-xl bg-teal-50 text-teal-800 font-bold text-xs border border-teal-200">
               {type === 'EC' ? 'RS485 EC Conductivity Probe' : type === 'TEMP' ? 'Submersible Temp Sensor' : type === 'WATER_LEVEL' ? 'Hydrostatic Level Sensor' : 'Crystal Vision Camera'}
             </span>
           ))}

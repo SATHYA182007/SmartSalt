@@ -32,7 +32,7 @@ const createCustomMarkerIcon = (block: SaltBlock, isSelected: boolean) => {
       : '#16A34A';
 
   const ringStyle = isSelected
-    ? 'box-shadow: 0 0 0 4px #2563EB, 0 8px 16px rgba(37,99,235,0.5); transform: scale(1.15); font-weight: 900;'
+    ? 'box-shadow: 0 0 0 4px #0D9488, 0 8px 16px rgba(13,148,136,0.5); transform: scale(1.15); font-weight: 900;'
     : 'box-shadow: 0 4px 10px rgba(0,0,0,0.3);';
 
   const html = `
@@ -96,7 +96,7 @@ export const LeafletSaltMap: React.FC<LeafletSaltMapProps> = ({
         <button
           onClick={() => setMapType('satellite')}
           className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all ${
-            mapType === 'satellite' ? 'bg-blue-600 text-white' : 'text-slate-300 hover:text-white'
+            mapType === 'satellite' ? 'bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 text-white shadow-xs' : 'text-slate-300 hover:text-white'
           }`}
         >
           Satellite
@@ -104,7 +104,7 @@ export const LeafletSaltMap: React.FC<LeafletSaltMapProps> = ({
         <button
           onClick={() => setMapType('street')}
           className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all ${
-            mapType === 'street' ? 'bg-blue-600 text-white' : 'text-slate-300 hover:text-white'
+            mapType === 'street' ? 'bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 text-white shadow-xs' : 'text-slate-300 hover:text-white'
           }`}
         >
           OpenStreetMap
@@ -156,7 +156,7 @@ export const LeafletSaltMap: React.FC<LeafletSaltMapProps> = ({
                     <div className="grid grid-cols-2 gap-2 text-xs py-1 border-y border-slate-100 font-semibold">
                       <div>
                         <span className="text-slate-400 text-[10px] block uppercase">Salinity EC</span>
-                        <span className="text-blue-600 font-bold">{block.currentEc} mS/cm</span>
+                        <span className="text-teal-600 font-bold">{block.currentEc} mS/cm</span>
                       </div>
                       <div>
                         <span className="text-slate-400 text-[10px] block uppercase">Harvest Ready</span>
@@ -169,7 +169,7 @@ export const LeafletSaltMap: React.FC<LeafletSaltMapProps> = ({
                         onSelectBlock(block.id);
                         navigate('/operator/monitoring');
                       }}
-                      className="w-full mt-1 py-1.5 px-3 rounded-lg bg-blue-600 text-white font-bold text-xs flex items-center justify-center gap-1 hover:bg-blue-700 transition-colors"
+                      className="w-full mt-1 py-1.5 px-3 rounded-lg bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 text-white font-bold text-xs flex items-center justify-center gap-1 shadow-md shadow-teal-500/20 hover:from-emerald-700 hover:to-cyan-700 transition-all"
                     >
                       View Telemetry <ArrowRight className="w-3 h-3" />
                     </button>

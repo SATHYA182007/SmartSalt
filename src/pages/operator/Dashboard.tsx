@@ -42,19 +42,20 @@ export const OperatorDashboard: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Top Banner Header */}
-      <div className="bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 rounded-3xl p-6 sm:p-8 text-white shadow-md relative overflow-hidden">
+      {/* Top Banner Header */}
+      <div className="bg-gradient-to-r from-emerald-800 via-teal-700 to-cyan-900 rounded-3xl p-6 sm:p-8 text-white shadow-xl shadow-teal-950/20 relative overflow-hidden">
         <div className="absolute right-0 top-0 bottom-0 w-1/3 bg-[radial-gradient(ellipse_at_top_right,#ffffff_0%,transparent_70%)] opacity-10 pointer-events-none" />
 
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="space-y-2">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-xs text-blue-100 text-xs font-semibold border border-white/20">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-xs text-teal-100 text-xs font-semibold border border-white/20">
               <LiveIndicator label="LoRa Telemetry Active" status="ONLINE" />
               <span>Maris Salt Works Co.</span>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
+            <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-emerald-200 via-teal-100 to-cyan-200 text-effect-glow">
               Good morning, {user?.name || 'Operator'}
             </h1>
-            <p className="text-blue-100 text-sm max-w-2xl leading-relaxed">
+            <p className="text-teal-100 text-sm max-w-2xl leading-relaxed">
               Salt Field Evaporation Overview — 12 active crystallization blocks monitored via LoRa sensor mesh.
               Average harvest readiness is currently <strong className="text-white">{avgHarvestReadiness}%</strong>.
             </p>
@@ -64,15 +65,15 @@ export const OperatorDashboard: React.FC = () => {
             <Button
               onClick={() => navigate('/operator/ai-insights')}
               variant="secondary"
-              className="bg-white text-blue-700 hover:bg-blue-50 border-none shadow-md"
-              leftIcon={<Sparkles className="w-4 h-4 text-blue-600" />}
+              className="bg-white text-teal-800 hover:bg-teal-50 border-none shadow-md font-bold"
+              leftIcon={<Sparkles className="w-4 h-4 text-teal-600" />}
             >
               AI Harvest Engine
             </Button>
             <Button
               onClick={() => navigate('/operator/monitoring')}
               variant="outline"
-              className="bg-white/10 text-white hover:bg-white/20 border-white/30"
+              className="bg-white/10 text-white hover:bg-white/20 border-white/30 font-semibold"
               rightIcon={<ArrowRight className="w-4 h-4" />}
             >
               Live Telemetry
@@ -87,7 +88,7 @@ export const OperatorDashboard: React.FC = () => {
         <div className="bg-white border border-slate-200/90 rounded-2xl p-5 shadow-xs">
           <div className="flex items-center justify-between text-slate-500 mb-2">
             <span className="text-xs font-semibold uppercase tracking-wider">Active Blocks</span>
-            <Grid3X3 className="w-4 h-4 text-blue-600" />
+            <Grid3X3 className="w-4 h-4 text-teal-600" />
           </div>
           <div className="text-2xl font-black text-slate-900">{totalBlocks}</div>
           <p className="text-[11px] text-slate-500 mt-1">
@@ -123,9 +124,9 @@ export const OperatorDashboard: React.FC = () => {
         <div className="bg-white border border-slate-200/90 rounded-2xl p-5 shadow-xs">
           <div className="flex items-center justify-between text-slate-500 mb-2">
             <span className="text-xs font-semibold uppercase tracking-wider">Avg Harvest Readiness</span>
-            <Droplets className="w-4 h-4 text-blue-600" />
+            <Droplets className="w-4 h-4 text-teal-600" />
           </div>
-          <div className="text-2xl font-black text-blue-600">{avgHarvestReadiness}%</div>
+          <div className="text-2xl font-black text-gradient-green-blue">{avgHarvestReadiness}%</div>
           <p className="text-[11px] text-slate-500 mt-1">
             <strong className="text-slate-700 font-semibold">Why this matters:</strong> 3 blocks are within 48 hours of optimal salt crust harvesting density.
           </p>
@@ -162,7 +163,7 @@ export const OperatorDashboard: React.FC = () => {
             <div className="p-4 rounded-xl bg-white border border-slate-200">
               <span className="text-xs text-slate-400 font-medium block">Electrical Conductivity</span>
               <div className="flex items-center justify-between mt-1">
-                <span className="text-lg font-black text-blue-600">{selectedBlock.currentEc} mS/cm</span>
+                <span className="text-lg font-black text-teal-600">{selectedBlock.currentEc} mS/cm</span>
                 <span className="text-xs font-bold text-emerald-600 flex items-center">
                   <TrendingUp className="w-3.5 h-3.5 mr-0.5" /> Rising
                 </span>
@@ -183,7 +184,7 @@ export const OperatorDashboard: React.FC = () => {
               <span className="text-xs text-slate-400 font-medium block">Water Level</span>
               <div className="flex items-center justify-between mt-1">
                 <span className="text-lg font-black text-slate-900">{selectedBlock.waterLevel} cm</span>
-                <span className="text-xs font-bold text-blue-600">Falling</span>
+                <span className="text-xs font-bold text-teal-600">Falling</span>
               </div>
               <p className="text-[10px] text-slate-500 mt-1">Volumetric loss via evaporation.</p>
             </div>
@@ -215,12 +216,12 @@ export const OperatorDashboard: React.FC = () => {
           <div className="bg-white border border-slate-200/90 rounded-2xl p-5 shadow-xs space-y-4">
             <div className="flex items-center justify-between border-b border-slate-100 pb-3">
               <div className="flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-blue-600" />
+                <Sparkles className="w-4 h-4 text-teal-600" />
                 <h3 className="font-bold text-slate-900 text-sm">AI Prediction ({selectedBlock.name})</h3>
               </div>
               <button
                 onClick={() => navigate('/operator/ai-insights')}
-                className="text-xs font-bold text-blue-600 hover:underline flex items-center gap-1"
+                className="text-xs font-bold text-teal-600 hover:underline flex items-center gap-1"
               >
                 Full AI Engine <ArrowRight className="w-3 h-3" />
               </button>
@@ -233,7 +234,7 @@ export const OperatorDashboard: React.FC = () => {
               </div>
               <div className="flex items-center justify-between text-xs">
                 <span className="text-slate-500">Harvest Readiness:</span>
-                <span className="font-extrabold text-blue-600">{aiInsight.harvestReadiness}%</span>
+                <span className="font-extrabold text-teal-600">{aiInsight.harvestReadiness}%</span>
               </div>
               <div className="flex items-center justify-between text-xs">
                 <span className="text-slate-500">Estimated Harvest:</span>
@@ -243,12 +244,12 @@ export const OperatorDashboard: React.FC = () => {
               {/* Progress bar */}
               <div className="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
                 <div
-                  className="bg-blue-600 h-2 rounded-full transition-all duration-500"
+                  className="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 h-2 rounded-full transition-all duration-500"
                   style={{ width: `${aiInsight.harvestReadiness}%` }}
                 />
               </div>
 
-              <p className="text-xs text-slate-600 bg-blue-50/70 p-3 rounded-xl border border-blue-100">
+              <p className="text-xs text-slate-600 bg-teal-50/70 p-3 rounded-xl border border-teal-100">
                 {aiInsight.summary}
               </p>
             </div>

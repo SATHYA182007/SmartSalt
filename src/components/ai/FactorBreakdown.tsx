@@ -11,7 +11,7 @@ export const FactorBreakdown: React.FC<FactorBreakdownProps> = ({ factors }) => 
     <div className="space-y-3">
       <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center justify-between">
         <span>Why This Prediction? (Key Sensor Determinants)</span>
-        <span className="text-[10px] text-blue-600 font-semibold lowercase">Neural weights validated</span>
+        <span className="text-[10px] text-teal-600 font-semibold lowercase">Neural weights validated</span>
       </h4>
 
       <div className="space-y-2">

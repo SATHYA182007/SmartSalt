@@ -24,13 +24,13 @@ export const AdminDashboard: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Banner */}
-      <div className="bg-slate-900 rounded-3xl p-6 sm:p-8 text-white shadow-md relative overflow-hidden">
+      <div className="bg-slate-900 rounded-3xl p-6 sm:p-8 text-white shadow-xl shadow-slate-950/20 relative overflow-hidden">
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="space-y-2">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-600/30 text-blue-300 text-xs font-semibold border border-blue-500/30">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-600/30 text-teal-300 text-xs font-semibold border border-teal-500/30">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" /> LoRaWAN Mesh Infrastructure
             </div>
-            <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight">SmartSalt Infrastructure</h1>
+            <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-emerald-200 via-teal-100 to-cyan-200 text-effect-glow">SmartSalt Infrastructure</h1>
             <p className="text-slate-400 text-sm max-w-2xl">
               Hardware node network health, LoRa gateway backhauls, battery longevity & probe calibration schedules.
             </p>
@@ -66,7 +66,7 @@ export const AdminDashboard: React.FC = () => {
 
         <div className="bg-white border border-slate-200/90 rounded-2xl p-4 shadow-xs">
           <span className="text-xs font-semibold text-slate-400 uppercase block">LoRa Gateways</span>
-          <div className="text-2xl font-black text-blue-600 mt-1">{stats.totalGateways}</div>
+          <div className="text-2xl font-black text-gradient-green-blue mt-1">{stats.totalGateways}</div>
           <span className="text-[10px] text-slate-500 mt-1 block">3 Active Gateway Masts</span>
         </div>
 
@@ -87,7 +87,7 @@ export const AdminDashboard: React.FC = () => {
       <div className="bg-white border border-slate-200/90 rounded-2xl p-6 shadow-xs space-y-4">
         <div className="flex items-center justify-between border-b border-slate-100 pb-3">
           <div className="flex items-center gap-2">
-            <RouterIcon className="w-5 h-5 text-blue-600" />
+            <RouterIcon className="w-5 h-5 text-teal-600" />
             <h3 className="font-bold text-slate-900 text-base">LoRaWAN Gateway Infrastructure</h3>
           </div>
           <Button onClick={() => navigate('/admin/gateways')} variant="ghost" size="sm" rightIcon={<ArrowRight className="w-4 h-4" />}>
@@ -115,7 +115,7 @@ export const AdminDashboard: React.FC = () => {
                 </div>
                 <div>
                   <span className="text-slate-400 text-[10px] uppercase block">Backhaul</span>
-                  <span className="font-bold text-blue-600">{gw.internetBackhaul}</span>
+                  <span className="font-bold text-teal-600">{gw.internetBackhaul}</span>
                 </div>
               </div>
             </div>

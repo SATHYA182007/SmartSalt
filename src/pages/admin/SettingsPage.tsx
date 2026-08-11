@@ -14,11 +14,13 @@ export const SettingsPage: React.FC = () => {
     <div className="max-w-4xl mx-auto space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white border border-slate-200/90 rounded-2xl p-6 shadow-xs">
         <div className="flex items-center gap-3">
-          <div className="p-3 rounded-2xl bg-blue-600 text-white shadow-md shadow-blue-200">
+          <div className="p-3 rounded-2xl bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 text-white shadow-md shadow-teal-500/25">
             <Sliders className="w-6 h-6" />
           </div>
           <div>
-            <h1 className="text-2xl font-extrabold text-slate-900">System & Telemetry Settings</h1>
+            <h1 className="text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
+              <span className="text-gradient-green-blue text-effect-glow">System & Telemetry Settings</span>
+            </h1>
             <p className="text-xs text-slate-500">
               LoRa frequency band configuration, telemetry uplink sampling rate & AI threshold parameters
             </p>

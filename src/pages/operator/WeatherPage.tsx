@@ -11,11 +11,13 @@ export const WeatherPage: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white border border-slate-200/90 rounded-2xl p-6 shadow-xs">
         <div className="flex items-center gap-3">
-          <div className="p-3 rounded-2xl bg-blue-600 text-white shadow-md shadow-blue-200">
+          <div className="p-3 rounded-2xl bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 text-white shadow-md shadow-teal-500/25">
             <CloudRain className="w-6 h-6" />
           </div>
           <div>
-            <h1 className="text-2xl font-extrabold text-slate-900">Salt Production Weather Risk</h1>
+            <h1 className="text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
+              <span className="text-gradient-green-blue text-effect-glow">Salt Production Weather Risk</span>
+            </h1>
             <p className="text-xs text-slate-500">
               Solar gain, evaporation rate, rain probability & brine dilution risk model
             </p>
@@ -28,12 +30,12 @@ export const WeatherPage: React.FC = () => {
       </div>
 
       {/* Main Weather Risk Summary Box */}
-      <div className="p-6 rounded-2xl bg-gradient-to-r from-amber-50/80 via-white to-blue-50/80 border border-amber-200 shadow-xs space-y-3">
+      <div className="p-6 rounded-2xl bg-gradient-to-r from-amber-50/80 via-white to-teal-50/80 border border-amber-200 shadow-xs space-y-3">
         <div className="flex items-center gap-2 text-amber-800 font-extrabold text-base">
           <ShieldAlert className="w-5 h-5 text-amber-600" /> Salt Field Weather Risk Evaluation
         </div>
         <p className="text-slate-800 text-sm font-medium leading-relaxed">{weather.riskSummary}</p>
-        <div className="pt-2 text-xs font-semibold text-blue-700">
+        <div className="pt-2 text-xs font-semibold text-teal-700">
           * Example Action: Rain may dilute concentrated brine in Block A03 (EC 185 mS/cm). Prepare emergency brine pump-over if rain exceeds 5mm.
         </div>
       </div>
@@ -54,7 +56,7 @@ export const WeatherPage: React.FC = () => {
         <div className="bg-white border border-slate-200/90 rounded-2xl p-5 shadow-xs">
           <div className="flex items-center justify-between text-slate-500 mb-2">
             <span className="text-xs font-bold uppercase tracking-wider">Relative Humidity</span>
-            <Droplets className="w-4 h-4 text-sky-500" />
+            <Droplets className="w-4 h-4 text-cyan-500" />
           </div>
           <div className="text-3xl font-black text-slate-900">{weather.humidity}%</div>
           <p className="text-[11px] text-slate-500 mt-2">Lower humidity accelerates moisture transition.</p>
@@ -74,7 +76,7 @@ export const WeatherPage: React.FC = () => {
         <div className="bg-white border border-slate-200/90 rounded-2xl p-5 shadow-xs">
           <div className="flex items-center justify-between text-slate-500 mb-2">
             <span className="text-xs font-bold uppercase tracking-wider">24h Accumulated Rain</span>
-            <CloudRain className="w-4 h-4 text-blue-600" />
+            <CloudRain className="w-4 h-4 text-teal-600" />
           </div>
           <div className="text-3xl font-black text-slate-900">{weather.rainfall24h} mm</div>
           <p className="text-[11px] text-slate-500 mt-2">Zero rainfall recorded in last 24 hours.</p>
@@ -84,7 +86,7 @@ export const WeatherPage: React.FC = () => {
         <div className="bg-white border border-slate-200/90 rounded-2xl p-5 shadow-xs">
           <div className="flex items-center justify-between text-slate-500 mb-2">
             <span className="text-xs font-bold uppercase tracking-wider">Wind Speed</span>
-            <Wind className="w-4 h-4 text-blue-500" />
+            <Wind className="w-4 h-4 text-cyan-600" />
           </div>
           <div className="text-3xl font-black text-slate-900">{weather.windSpeed} km/h</div>
           <p className="text-[11px] text-slate-500 mt-2">Air movement removes vapor layer over pans.</p>
@@ -96,7 +98,7 @@ export const WeatherPage: React.FC = () => {
             <span className="text-xs font-bold uppercase tracking-wider">Evaporation Rate</span>
             <Sun className="w-4 h-4 text-amber-500" />
           </div>
-          <div className="text-3xl font-black text-blue-600">{weather.evaporationRate} mm/day</div>
+          <div className="text-3xl font-black text-gradient-green-blue">{weather.evaporationRate} mm/day</div>
           <p className="text-[11px] text-slate-500 mt-2">High evaporation momentum supported by solar gain.</p>
         </div>
       </div>
@@ -110,7 +112,7 @@ export const WeatherPage: React.FC = () => {
             <div key={idx} className="p-3 rounded-xl bg-slate-50 border border-slate-200 text-center space-y-1">
               <span className="text-[10px] font-bold text-slate-400 block">{f.time}</span>
               <span className="text-base font-extrabold text-slate-900">{f.temp}°C</span>
-              <span className="text-xs font-bold text-blue-600 block">{f.rainProb}% Rain</span>
+              <span className="text-xs font-bold text-teal-600 block">{f.rainProb}% Rain</span>
               <span className="text-[10px] font-semibold text-slate-500 block truncate">{f.condition}</span>
             </div>
           ))}

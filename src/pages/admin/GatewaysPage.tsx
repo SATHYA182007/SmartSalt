@@ -12,18 +12,20 @@ export const GatewaysPage: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white border border-slate-200/90 rounded-2xl p-6 shadow-xs">
         <div className="flex items-center gap-3">
-          <div className="p-3 rounded-2xl bg-blue-600 text-white shadow-md shadow-blue-200">
+          <div className="p-3 rounded-2xl bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 text-white shadow-md shadow-teal-500/25">
             <RouterIcon className="w-6 h-6" />
           </div>
           <div>
-            <h1 className="text-2xl font-extrabold text-slate-900">LoRaWAN Gateway Network</h1>
+            <h1 className="text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
+              <span className="text-gradient-green-blue text-effect-glow">LoRaWAN Gateway Network</span>
+            </h1>
             <p className="text-xs text-slate-500">
               868 MHz LoRa concentration gateways, backhaul links, packet delivery rate & gateway uptime
             </p>
           </div>
         </div>
 
-        <Button variant="secondary" leftIcon={<RefreshCw className="w-4 h-4" />}>
+        <Button variant="secondary" leftIcon={<RefreshCw className="w-4 h-4 text-teal-600" />}>
           Sync All Gateways
         </Button>
       </div>
@@ -52,7 +54,7 @@ export const GatewaysPage: React.FC = () => {
 
               <div className="flex items-center justify-between">
                 <span className="text-slate-500">Signal Health:</span>
-                <span className="font-extrabold text-blue-600">{gw.signalHealth}%</span>
+                <span className="font-extrabold text-teal-600">{gw.signalHealth}%</span>
               </div>
 
               <div className="flex items-center justify-between">

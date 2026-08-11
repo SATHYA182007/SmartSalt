@@ -101,7 +101,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isMobileOpen, onMobileClose })
                 className={({ isActive }) =>
                   `flex items-center gap-3 px-3 py-2.5 rounded-xl font-medium text-sm transition-all group ${
                     isActive
-                      ? 'bg-blue-600 text-white shadow-sm shadow-blue-200 font-semibold'
+                      ? 'bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 text-white shadow-md shadow-teal-500/25 font-bold'
                       : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
                   } ${isCollapsed ? 'justify-center px-0' : ''}`
                 }

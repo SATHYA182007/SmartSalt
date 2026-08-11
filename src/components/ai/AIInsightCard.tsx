@@ -15,13 +15,15 @@ export const AIInsightCard: React.FC<AIInsightCardProps> = ({ insight }) => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-4">
         <div className="flex items-center gap-3">
-          <div className="p-3 rounded-2xl bg-blue-600 text-white shadow-md shadow-blue-200">
+          <div className="p-3 rounded-2xl bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 text-white shadow-md shadow-teal-500/25">
             <BrainCircuit className="w-6 h-6" />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <h3 className="text-lg font-extrabold text-slate-900">AI Salt Field Intelligence</h3>
-              <Badge variant="blue" size="sm" icon={<Sparkles className="w-3 h-3" />}>
+              <h3 className="text-lg font-black text-slate-900 tracking-tight">
+                <span className="text-gradient-green-blue">AI Salt Field Intelligence</span>
+              </h3>
+              <Badge variant="blue" size="sm" icon={<Sparkles className="w-3 h-3 text-teal-600" />}>
                 Neural Model v2.4
               </Badge>
             </div>
@@ -30,19 +32,19 @@ export const AIInsightCard: React.FC<AIInsightCardProps> = ({ insight }) => {
         </div>
 
         {/* AI Confidence Indicator */}
-        <div className="flex items-center gap-3 bg-blue-50/80 border border-blue-100 px-4 py-2 rounded-xl">
-          <ShieldCheck className="w-5 h-5 text-blue-600" />
+        <div className="flex items-center gap-3 bg-teal-50/80 border border-teal-100 px-4 py-2 rounded-xl">
+          <ShieldCheck className="w-5 h-5 text-teal-600" />
           <div>
             <span className="block text-[10px] uppercase tracking-wider font-bold text-slate-400">AI Model Confidence</span>
-            <span className="text-base font-extrabold text-blue-600">{insight.confidence}%</span>
+            <span className="text-base font-extrabold text-teal-600">{insight.confidence}%</span>
           </div>
         </div>
       </div>
 
       {/* Main AI Summary Box */}
-      <div className="p-4 rounded-xl bg-gradient-to-r from-blue-50/90 via-slate-50 to-white border border-blue-100 text-sm">
-        <div className="flex items-center gap-2 text-blue-700 font-bold mb-1">
-          <Sparkles className="w-4 h-4" /> AI Field Synthesis ({insight.blockName})
+      <div className="p-4 rounded-xl bg-gradient-to-r from-teal-50/90 via-slate-50 to-white border border-teal-100 text-sm">
+        <div className="flex items-center gap-2 text-teal-800 font-bold mb-1">
+          <Sparkles className="w-4 h-4 text-teal-600" /> AI Field Synthesis ({insight.blockName})
         </div>
         <p className="text-slate-700 font-medium leading-relaxed">{insight.summary}</p>
       </div>
@@ -56,7 +58,7 @@ export const AIInsightCard: React.FC<AIInsightCardProps> = ({ insight }) => {
           </span>
           <div className="flex items-center justify-between">
             <span className="text-base font-extrabold text-slate-900">{insight.salinityEstimate}</span>
-            <Zap className="w-4 h-4 text-blue-600" />
+            <Zap className="w-4 h-4 text-teal-600" />
           </div>
           <span className="text-[10px] text-slate-400 mt-1 block">Target ~210 mS/cm</span>
         </div>
@@ -68,7 +70,7 @@ export const AIInsightCard: React.FC<AIInsightCardProps> = ({ insight }) => {
           </span>
           <div className="flex items-center justify-between">
             <span className="text-base font-extrabold text-slate-900 truncate">{insight.crystallizationStage}</span>
-            <span className="text-xs font-bold text-blue-600 bg-blue-100 px-1.5 py-0.5 rounded">
+            <span className="text-xs font-bold text-teal-700 bg-teal-100 px-1.5 py-0.5 rounded">
               S{insight.crystallizationStageNumber}
             </span>
           </div>
@@ -76,15 +78,15 @@ export const AIInsightCard: React.FC<AIInsightCardProps> = ({ insight }) => {
         </div>
 
         {/* Card 3: Harvest Readiness */}
-        <div className="p-4 rounded-xl bg-blue-50/70 border border-blue-200">
-          <span className="text-[11px] font-semibold text-blue-700 uppercase tracking-wider block mb-1">
+        <div className="p-4 rounded-xl bg-teal-50/70 border border-teal-200">
+          <span className="text-[11px] font-semibold text-teal-800 uppercase tracking-wider block mb-1">
             Harvest Readiness
           </span>
           <div className="flex items-center justify-between">
-            <span className="text-xl font-black text-blue-600">{insight.harvestReadiness}%</span>
-            <Droplets className="w-5 h-5 text-blue-600" />
+            <span className="text-xl font-black text-gradient-green-blue">{insight.harvestReadiness}%</span>
+            <Droplets className="w-5 h-5 text-teal-600" />
           </div>
-          <span className="text-[10px] text-blue-600 font-medium mt-1 block">NaCl Crust Target</span>
+          <span className="text-[10px] text-teal-700 font-medium mt-1 block">NaCl Crust Target</span>
         </div>
 
         {/* Card 4: Estimated Window */}

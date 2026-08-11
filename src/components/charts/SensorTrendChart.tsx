@@ -28,7 +28,7 @@ export const SensorTrendChart: React.FC<SensorTrendChartProps> = ({ blockId }) =
     ec: {
       name: 'Salinity EC',
       unit: 'mS/cm',
-      color: '#2563EB',
+      color: '#0D9488',
       gradientId: 'colorEc',
       icon: Zap,
     },
@@ -42,7 +42,7 @@ export const SensorTrendChart: React.FC<SensorTrendChartProps> = ({ blockId }) =
     waterLevel: {
       name: 'Water Level',
       unit: 'cm',
-      color: '#0284C7',
+      color: '#06B6D4',
       gradientId: 'colorWater',
       icon: Droplets,
     },
@@ -55,11 +55,13 @@ export const SensorTrendChart: React.FC<SensorTrendChartProps> = ({ blockId }) =
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-4">
         <div className="flex items-center gap-3">
-          <div className="p-2 sm:p-2.5 rounded-xl bg-blue-50 text-blue-600 border border-blue-100 shrink-0">
+          <div className="p-2 sm:p-2.5 rounded-xl bg-teal-50 text-teal-600 border border-teal-100 shrink-0">
             <current.icon className="w-5 h-5" />
           </div>
           <div>
-            <h3 className="text-sm sm:text-base font-bold text-slate-900">{current.name} Historical Telemetry</h3>
+            <h3 className="text-sm sm:text-base font-extrabold text-slate-900 tracking-tight">
+              <span className="text-gradient-green-blue">{current.name} Historical Telemetry</span>
+            </h3>
             <p className="text-[11px] sm:text-xs text-slate-500">
               Sensor readings over time for <span className="font-semibold text-slate-700">Block {blockId}</span>
             </p>
@@ -76,7 +78,7 @@ export const SensorTrendChart: React.FC<SensorTrendChartProps> = ({ blockId }) =
                 onClick={() => setActiveMetric(m)}
                 className={`px-2 sm:px-3 py-1.5 rounded-lg text-[11px] sm:text-xs font-semibold transition-all ${
                   activeMetric === m
-                    ? 'bg-white text-blue-600 shadow-xs'
+                    ? 'bg-white text-teal-700 shadow-xs'
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
@@ -93,7 +95,7 @@ export const SensorTrendChart: React.FC<SensorTrendChartProps> = ({ blockId }) =
                 onClick={() => setTimeframe(t)}
                 className={`px-2 sm:px-2.5 py-1.5 rounded-lg text-[11px] sm:text-xs font-semibold transition-all ${
                   timeframe === t
-                    ? 'bg-blue-600 text-white shadow-xs'
+                    ? 'bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 text-white shadow-xs'
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
@@ -110,16 +112,16 @@ export const SensorTrendChart: React.FC<SensorTrendChartProps> = ({ blockId }) =
           <AreaChart data={data} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
             <defs>
               <linearGradient id="colorEc" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#2563EB" stopOpacity={0.25} />
-                <stop offset="95%" stopColor="#2563EB" stopOpacity={0} />
+                <stop offset="5%" stopColor="#0D9488" stopOpacity={0.3} />
+                <stop offset="95%" stopColor="#0D9488" stopOpacity={0} />
               </linearGradient>
               <linearGradient id="colorTemp" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="5%" stopColor="#F59E0B" stopOpacity={0.25} />
                 <stop offset="95%" stopColor="#F59E0B" stopOpacity={0} />
               </linearGradient>
               <linearGradient id="colorWater" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#0284C7" stopOpacity={0.25} />
-                <stop offset="95%" stopColor="#0284C7" stopOpacity={0} />
+                <stop offset="5%" stopColor="#06B6D4" stopOpacity={0.3} />
+                <stop offset="95%" stopColor="#06B6D4" stopOpacity={0} />
               </linearGradient>
             </defs>
             <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" vertical={false} />
@@ -149,11 +151,11 @@ export const SensorTrendChart: React.FC<SensorTrendChartProps> = ({ blockId }) =
       </div>
 
       {/* Chart Footer Analysis Callout */}
-      <div className="p-3 rounded-xl bg-blue-50/60 border border-blue-100 flex items-center justify-between text-xs">
+      <div className="p-3 rounded-xl bg-teal-50/60 border border-teal-100 flex items-center justify-between text-xs">
         <span className="text-slate-600">
           <strong className="text-slate-900 font-semibold">Telemetry Insight:</strong> Steady evaporation curve detected. Brine density gains correlated with solar radiation index.
         </span>
-        <span className="font-semibold text-blue-600 shrink-0">Optimal Growth Trend</span>
+        <span className="font-semibold text-teal-600 shrink-0">Optimal Growth Trend</span>
       </div>
     </div>
   );

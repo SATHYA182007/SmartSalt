@@ -15,7 +15,9 @@ export const AdminAlertsPage: React.FC = () => {
             <Bell className="w-6 h-6" />
           </div>
           <div>
-            <h1 className="text-2xl font-extrabold text-slate-900">Infrastructure Alerts Stream</h1>
+            <h1 className="text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
+              <span className="text-gradient-green-blue text-effect-glow">Infrastructure Alerts Stream</span>
+            </h1>
             <p className="text-xs text-slate-500">
               Hardware disconnects, gateway timeouts & low battery notifications across deployment
             </p>
@@ -33,7 +35,7 @@ export const AdminAlertsPage: React.FC = () => {
                   <Badge variant={alert.severity === 'CRITICAL' ? 'danger' : 'warning'} size="sm">
                     {alert.severity}
                   </Badge>
-                  <span className="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full border border-blue-100">
+                  <span className="text-xs font-bold text-teal-700 bg-teal-50 px-2 py-0.5 rounded-full border border-teal-100">
                     {alert.blockName}
                   </span>
                 </div>

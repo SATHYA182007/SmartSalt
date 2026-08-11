@@ -17,7 +17,7 @@ export const HowItWorksPage: React.FC = () => {
           <div className="text-center max-w-3xl mx-auto space-y-4">
             <Badge variant="blue" size="md">System Architecture</Badge>
             <h1 className="text-4xl sm:text-5xl font-black text-slate-900 tracking-tight">
-              From Salt Pan Probes To AI Prediction
+              <span className="text-gradient-green-blue text-effect-glow">From Salt Pan Probes To AI Prediction</span>
             </h1>
             <p className="text-slate-600 text-base">
               SmartSalt AI uses an end-to-end industrial IoT architecture designed for high-saline salt field environments.
@@ -27,7 +27,7 @@ export const HowItWorksPage: React.FC = () => {
           {/* Architecture Pipeline */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs space-y-3">
-              <div className="p-3 rounded-xl bg-blue-50 text-blue-600 w-fit">
+              <div className="p-3 rounded-xl bg-teal-50 text-teal-600 w-fit border border-teal-100">
                 <Cpu className="w-6 h-6" />
               </div>
               <h3 className="font-extrabold text-slate-900 text-lg">1. ESP32 Sensor Node</h3>
@@ -37,7 +37,7 @@ export const HowItWorksPage: React.FC = () => {
             </div>
 
             <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs space-y-3">
-              <div className="p-3 rounded-xl bg-blue-50 text-blue-600 w-fit">
+              <div className="p-3 rounded-xl bg-teal-50 text-teal-600 w-fit border border-teal-100">
                 <Radio className="w-6 h-6" />
               </div>
               <h3 className="font-extrabold text-slate-900 text-lg">2. 868MHz LoRa Mesh</h3>
@@ -47,7 +47,7 @@ export const HowItWorksPage: React.FC = () => {
             </div>
 
             <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs space-y-3">
-              <div className="p-3 rounded-xl bg-blue-50 text-blue-600 w-fit">
+              <div className="p-3 rounded-xl bg-teal-50 text-teal-600 w-fit border border-teal-100">
                 <RouterIcon className="w-6 h-6" />
               </div>
               <h3 className="font-extrabold text-slate-900 text-lg">3. Gateway Backhaul</h3>
@@ -57,7 +57,7 @@ export const HowItWorksPage: React.FC = () => {
             </div>
 
             <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs space-y-3">
-              <div className="p-3 rounded-xl bg-blue-50 text-blue-600 w-fit">
+              <div className="p-3 rounded-xl bg-teal-50 text-teal-600 w-fit border border-teal-100">
                 <Cloud className="w-6 h-6" />
               </div>
               <h3 className="font-extrabold text-slate-900 text-lg">4. Supabase & Cloud Storage</h3>
@@ -67,7 +67,7 @@ export const HowItWorksPage: React.FC = () => {
             </div>
 
             <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs space-y-3">
-              <div className="p-3 rounded-xl bg-emerald-50 text-emerald-600 w-fit">
+              <div className="p-3 rounded-xl bg-emerald-50 text-emerald-600 w-fit border border-emerald-100">
                 <BrainCircuit className="w-6 h-6" />
               </div>
               <h3 className="font-extrabold text-slate-900 text-lg">5. AI Prediction Model</h3>
@@ -77,7 +77,7 @@ export const HowItWorksPage: React.FC = () => {
             </div>
 
             <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs space-y-3">
-              <div className="p-3 rounded-xl bg-blue-600 text-white w-fit">
+              <div className="p-3 rounded-xl bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 text-white w-fit shadow-md shadow-teal-500/25">
                 <LayoutDashboard className="w-6 h-6" />
               </div>
               <h3 className="font-extrabold text-slate-900 text-lg">6. Operator Control Center</h3>

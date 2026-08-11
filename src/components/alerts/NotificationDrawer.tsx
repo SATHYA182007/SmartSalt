@@ -34,7 +34,7 @@ export const NotificationDrawer: React.FC<NotificationDrawerProps> = ({ isOpen, 
             {/* Drawer Header */}
             <div className="px-4 py-3 border-b border-slate-100 bg-slate-50/70 flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <Bell className="w-4 h-4 text-blue-600" />
+                <Bell className="w-4 h-4 text-teal-600" />
                 <span className="font-semibold text-sm text-slate-900">Hardware Telemetry Alerts</span>
               </div>
               {notifications.length > 0 && (
@@ -57,7 +57,7 @@ export const NotificationDrawer: React.FC<NotificationDrawerProps> = ({ isOpen, 
                     key={n.id}
                     onClick={() => handleNotificationClick(n.link, n.id)}
                     className={`p-4 hover:bg-slate-50 transition-colors cursor-pointer flex gap-3 ${
-                      !n.read ? 'bg-blue-50/40' : ''
+                      !n.read ? 'bg-teal-50/40' : ''
                     }`}
                   >
                     <div
@@ -66,7 +66,7 @@ export const NotificationDrawer: React.FC<NotificationDrawerProps> = ({ isOpen, 
                           ? 'bg-rose-500'
                           : n.severity === 'warning'
                           ? 'bg-amber-500'
-                          : 'bg-blue-500'
+                          : 'bg-teal-500'
                       }`}
                     />
                     <div className="flex-1 min-w-0">
@@ -75,7 +75,7 @@ export const NotificationDrawer: React.FC<NotificationDrawerProps> = ({ isOpen, 
                         <span className="text-[10px] text-slate-400 shrink-0">{n.timestamp}</span>
                       </div>
                       <p className="text-xs text-slate-600 line-clamp-2">{n.message}</p>
-                      <div className="mt-2 flex items-center gap-1 text-[11px] font-semibold text-blue-600">
+                      <div className="mt-2 flex items-center gap-1 text-[11px] font-semibold text-teal-600">
                         View details <ArrowRight className="w-3 h-3" />
                       </div>
                     </div>

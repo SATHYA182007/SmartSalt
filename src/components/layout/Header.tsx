@@ -36,8 +36,8 @@ export const Header: React.FC<HeaderProps> = ({ onMobileMenuToggle }) => {
         </button>
 
         <div>
-          <h1 className="text-base sm:text-lg font-bold text-slate-900 leading-tight">
-            {role === 'admin' ? 'Infrastructure Monitor' : 'Salt Field Operations'}
+          <h1 className="text-base sm:text-lg font-black tracking-tight text-slate-900 leading-tight flex items-center gap-1.5">
+            <span className="text-gradient-green-blue">{role === 'admin' ? 'Infrastructure Monitor' : 'Salt Field Operations'}</span>
           </h1>
           <p className="text-xs text-slate-500 hidden sm:block">
             {role === 'admin'
@@ -81,7 +81,7 @@ export const Header: React.FC<HeaderProps> = ({ onMobileMenuToggle }) => {
           >
             <Bell className="w-5 h-5" />
             {unreadCount > 0 && (
-              <span className="absolute top-1.5 right-1.5 w-4 h-4 bg-blue-600 text-white text-[10px] font-bold rounded-full flex items-center justify-center border-2 border-white">
+              <span className="absolute top-1.5 right-1.5 w-4 h-4 bg-gradient-to-r from-teal-600 to-cyan-600 text-white text-[10px] font-bold rounded-full flex items-center justify-center border-2 border-white shadow-xs">
                 {unreadCount}
               </span>
             )}
@@ -122,9 +122,9 @@ export const Header: React.FC<HeaderProps> = ({ onMobileMenuToggle }) => {
                 <div className="py-1">
                   <button
                     onClick={handleRoleSwitch}
-                    className="w-full px-4 py-2 text-left text-xs font-semibold text-blue-600 hover:bg-blue-50 flex items-center gap-2"
+                    className="w-full px-4 py-2 text-left text-xs font-semibold text-teal-700 hover:bg-teal-50 flex items-center gap-2"
                   >
-                    <ArrowRightLeft className="w-3.5 h-3.5" />
+                    <ArrowRightLeft className="w-3.5 h-3.5 text-teal-600" />
                     Switch to {role === 'operator' ? 'Admin Role' : 'Operator Role'}
                   </button>
                   <button

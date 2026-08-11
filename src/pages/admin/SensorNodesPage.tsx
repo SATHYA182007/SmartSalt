@@ -23,11 +23,13 @@ export const SensorNodesPage: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white border border-slate-200/90 rounded-2xl p-6 shadow-xs">
         <div className="flex items-center gap-3">
-          <div className="p-3 rounded-2xl bg-blue-600 text-white shadow-md shadow-blue-200">
+          <div className="p-3 rounded-2xl bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 text-white shadow-md shadow-teal-500/25">
             <Radio className="w-6 h-6" />
           </div>
           <div>
-            <h1 className="text-2xl font-extrabold text-slate-900">Deployed Sensor Nodes ({nodes.length})</h1>
+            <h1 className="text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
+              <span className="text-gradient-green-blue text-effect-glow">Deployed Sensor Nodes ({nodes.length})</span>
+            </h1>
             <p className="text-xs text-slate-500">
               Hardware node inventory across salt pans, LoRa RSSI link budgets & probe telemetry status
             </p>
@@ -43,7 +45,7 @@ export const SensorNodesPage: React.FC = () => {
               placeholder="Search node ID or block..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-9 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-blue-500 w-48 sm:w-64"
+              className="pl-9 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-teal-500 w-48 sm:w-64"
             />
           </div>
 
@@ -81,7 +83,7 @@ export const SensorNodesPage: React.FC = () => {
               {filteredNodes.map((node) => (
                 <tr key={node.id} className="hover:bg-slate-50/80 transition-colors">
                   <td className="py-3.5 px-4 font-bold text-slate-900">{node.id}</td>
-                  <td className="py-3.5 px-4 font-semibold text-blue-600">{node.blockName}</td>
+                  <td className="py-3.5 px-4 font-semibold text-teal-600">{node.blockName}</td>
                   <td className="py-3.5 px-4">
                     <div className="flex gap-1">
                       {node.sensorTypes.map((t) => (
@@ -109,7 +111,7 @@ export const SensorNodesPage: React.FC = () => {
                       onClick={() => navigate(`/operator/sensors/${node.id}`)}
                       variant="ghost"
                       size="sm"
-                      leftIcon={<Eye className="w-3.5 h-3.5 text-blue-600" />}
+                      leftIcon={<Eye className="w-3.5 h-3.5 text-teal-600" />}
                     >
                       Details
                     </Button>

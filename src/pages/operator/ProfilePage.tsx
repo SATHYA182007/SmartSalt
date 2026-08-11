@@ -22,11 +22,13 @@ export const ProfilePage: React.FC = () => {
           <img
             src={user?.avatarUrl || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150'}
             alt={user?.name}
-            className="w-24 h-24 rounded-full object-cover border-4 border-blue-100 shadow-sm"
+            className="w-24 h-24 rounded-full object-cover border-4 border-teal-100 shadow-md"
           />
           <div className="space-y-1 text-center sm:text-left">
             <div className="flex items-center justify-center sm:justify-start gap-3">
-              <h1 className="text-2xl font-extrabold text-slate-900">{user?.name}</h1>
+              <h1 className="text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
+                <span className="text-gradient-green-blue text-effect-glow">{user?.name}</span>
+              </h1>
               <Badge variant={role === 'admin' ? 'blue' : 'success'} size="md">
                 {role === 'admin' ? 'System Administrator' : 'Field Operator'}
               </Badge>
@@ -43,28 +45,28 @@ export const ProfilePage: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
             <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
               <span className="text-slate-400 font-semibold flex items-center gap-1.5">
-                <User className="w-4 h-4 text-blue-600" /> Full Name
+                <User className="w-4 h-4 text-teal-600" /> Full Name
               </span>
               <span className="font-bold text-slate-900 text-sm block">{user?.name}</span>
             </div>
 
             <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
               <span className="text-slate-400 font-semibold flex items-center gap-1.5">
-                <Mail className="w-4 h-4 text-blue-600" /> Email Address
+                <Mail className="w-4 h-4 text-teal-600" /> Email Address
               </span>
               <span className="font-bold text-slate-900 text-sm block">{user?.email}</span>
             </div>
 
             <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
               <span className="text-slate-400 font-semibold flex items-center gap-1.5">
-                <Shield className="w-4 h-4 text-blue-600" /> Active Role
+                <Shield className="w-4 h-4 text-teal-600" /> Active Role
               </span>
               <span className="font-bold text-slate-900 text-sm block capitalize">{role}</span>
             </div>
 
             <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
               <span className="text-slate-400 font-semibold flex items-center gap-1.5">
-                <Building className="w-4 h-4 text-blue-600" /> Organization
+                <Building className="w-4 h-4 text-teal-600" /> Organization
               </span>
               <span className="font-bold text-slate-900 text-sm block">{user?.organization}</span>
             </div>

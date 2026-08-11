@@ -17,7 +17,9 @@ export const CalibrationPage: React.FC = () => {
             <Sliders className="w-6 h-6" />
           </div>
           <div>
-            <h1 className="text-2xl font-extrabold text-slate-900">Sensor Probe Calibration Schedule</h1>
+            <h1 className="text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
+              <span className="text-gradient-green-blue text-effect-glow">Sensor Probe Calibration Schedule</span>
+            </h1>
             <p className="text-xs text-slate-500">
               RS485 EC conductivity probe zero-point drift, temperature offsets & level probe recalibration
             </p>
@@ -33,7 +35,7 @@ export const CalibrationPage: React.FC = () => {
             <span className="text-2xl font-black text-slate-900 mt-1 block">44 / 48 Valid</span>
             <span className="text-[11px] text-emerald-600 font-semibold mt-1 block">±0.2 mS/cm accuracy</span>
           </div>
-          <Zap className="w-8 h-8 text-blue-600 opacity-80" />
+          <Zap className="w-8 h-8 text-teal-600 opacity-80" />
         </div>
 
         <div className="bg-white border border-slate-200/90 rounded-2xl p-5 shadow-xs flex items-center justify-between">
@@ -51,7 +53,7 @@ export const CalibrationPage: React.FC = () => {
             <span className="text-2xl font-black text-slate-900 mt-1 block">46 / 48 Valid</span>
             <span className="text-[11px] text-emerald-600 font-semibold mt-1 block">±0.05 cm level offset</span>
           </div>
-          <Droplets className="w-8 h-8 text-sky-500 opacity-80" />
+          <Droplets className="w-8 h-8 text-cyan-600 opacity-80" />
         </div>
       </div>
 
@@ -76,7 +78,7 @@ export const CalibrationPage: React.FC = () => {
               {nodes.map((node) => (
                 <tr key={node.id} className="hover:bg-slate-50 transition-colors">
                   <td className="py-3 px-4 font-bold text-slate-900">{node.id}</td>
-                  <td className="py-3 px-4 font-semibold text-blue-600">{node.blockName}</td>
+                  <td className="py-3 px-4 font-semibold text-teal-600">{node.blockName}</td>
                   <td className="py-3 px-4 text-slate-600">{node.lastCalibrated}</td>
                   <td className="py-3 px-4 text-slate-600">{node.nextCalibrationDue}</td>
                   <td className="py-3 px-4 text-slate-500">+0.04 mS/cm</td>
@@ -86,7 +88,7 @@ export const CalibrationPage: React.FC = () => {
                     </Badge>
                   </td>
                   <td className="py-3 px-4 text-right">
-                    <Button variant="outline" size="sm" leftIcon={<RefreshCw className="w-3 h-3 text-blue-600" />}>
+                    <Button variant="outline" size="sm" leftIcon={<RefreshCw className="w-3 h-3 text-teal-600" />}>
                       Recalibrate
                     </Button>
                   </td>

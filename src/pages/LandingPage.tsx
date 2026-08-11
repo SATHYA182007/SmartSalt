@@ -29,7 +29,7 @@ export const LandingPage: React.FC = () => {
   const [isLoading, setIsLoading] = React.useState(true);
 
   return (
-    <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-blue-500 selection:text-white">
+    <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-teal-500 selection:text-white">
       {/* Brand Initial Entry Splash Loader */}
       <AnimatePresence mode="wait">
         {isLoading && (
@@ -45,8 +45,11 @@ export const LandingPage: React.FC = () => {
       <LandingNavbar />
 
       {/* Hero Section */}
-      <section className="relative pt-12 pb-20 lg:pt-16 lg:pb-28 bg-gradient-to-b from-teal-50/50 via-white to-white border-b border-slate-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <section className="relative pt-12 pb-20 lg:pt-16 lg:pb-28 bg-gradient-to-b from-teal-50/40 via-slate-50/20 to-white border-b border-slate-100 overflow-hidden">
+        {/* Moving Grid Background Layer */}
+        <div className="absolute inset-0 bg-moving-grid pointer-events-none z-0" />
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           {/* Top Hero Text */}
           <div className="text-center max-w-4xl mx-auto space-y-6">
             <motion.div
@@ -283,8 +286,9 @@ export const LandingPage: React.FC = () => {
       </section>
 
       {/* DEDICATED HARDWARE ARCHITECTURE DEEP DIVE */}
-      <section id="hardware-architecture" className="py-20 bg-slate-50/70 border-b border-slate-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <section id="hardware-architecture" className="relative py-20 bg-slate-50/70 border-b border-slate-100 overflow-hidden">
+        <div className="absolute inset-0 bg-moving-grid-accent opacity-50 pointer-events-none z-0" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           <div className="text-center max-w-2xl mx-auto space-y-3">
             <Badge variant="blue" size="md">Hardware Architecture</Badge>
             <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight">
