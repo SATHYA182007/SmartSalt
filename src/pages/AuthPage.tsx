@@ -53,29 +53,29 @@ export const AuthPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen relative flex flex-col items-center justify-center p-4 sm:p-6 lg:p-8 font-sans overflow-hidden bg-slate-900">
+    <div className="min-h-screen relative flex flex-col items-center justify-center p-3 sm:p-6 lg:p-8 font-sans overflow-hidden bg-slate-900 py-4 sm:py-8">
       {/* Full Page Salt Field Background Image Layer */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105"
         style={{ backgroundImage: `url('/salt-field-bg.png')` }}
       />
       {/* Dark gradient & subtle glass overlay for sharp visual hierarchy */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-950/80 via-teal-950/65 to-slate-950/85 backdrop-blur-[3px]" />
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-950/85 via-teal-950/70 to-slate-950/90 backdrop-blur-[3px]" />
 
       {/* Back to Landing Page Floating Button */}
-      <div className="relative z-10 w-full max-w-5xl mb-4 flex items-center justify-between">
+      <div className="relative z-10 w-full max-w-md lg:max-w-5xl mb-2 sm:mb-4 flex items-center justify-between">
         <button
           onClick={() => navigate('/')}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/90 backdrop-blur-md border border-white/50 hover:bg-white text-slate-800 text-xs font-bold transition-all shadow-lg shadow-slate-950/20 group"
+          className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-white/90 backdrop-blur-md border border-white/50 hover:bg-white text-slate-800 text-xs font-bold transition-all shadow-lg shadow-slate-950/20 group"
         >
-          <ArrowLeft className="w-4 h-4 text-teal-600 group-hover:-translate-x-0.5 transition-transform" />
+          <ArrowLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-teal-600 group-hover:-translate-x-0.5 transition-transform" />
           <span>Back to Landing Page</span>
         </button>
       </div>
 
-      <div className="relative z-10 w-full max-w-5xl bg-white/95 backdrop-blur-xl border border-white/60 rounded-3xl shadow-2xl shadow-slate-950/40 overflow-hidden grid grid-cols-1 lg:grid-cols-2">
-        {/* LEFT COLUMN: SmartSalt AI Branding & Visual */}
-        <div className="relative p-8 sm:p-12 text-white flex flex-col justify-between overflow-hidden bg-slate-900">
+      <div className="relative z-10 w-full max-w-md lg:max-w-5xl bg-white/95 backdrop-blur-xl border border-white/60 rounded-2xl sm:rounded-3xl shadow-2xl shadow-slate-950/40 overflow-hidden grid grid-cols-1 lg:grid-cols-2">
+        {/* LEFT COLUMN: SmartSalt AI Branding & Visual (Desktop Only) */}
+        <div className="hidden lg:flex relative p-8 sm:p-12 text-white flex-col justify-between overflow-hidden bg-slate-900">
           {/* Salt Field Image Background in Left Panel */}
           <div 
             className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-110"
@@ -118,7 +118,17 @@ export const AuthPage: React.FC = () => {
         </div>
 
         {/* RIGHT COLUMN: Authentication & Role Selection Form */}
-        <div className="p-8 sm:p-12 flex flex-col justify-center space-y-6">
+        <div className="p-4 sm:p-8 lg:p-12 flex flex-col justify-center space-y-3 sm:space-y-6">
+          {/* Compact Mobile Brand Header */}
+          <div className="lg:hidden flex flex-col items-center text-center space-y-1 pb-1 border-b border-slate-100">
+            <img
+              src="/sslogo-transparent.png"
+              alt="SmartSalt AI Logo"
+              className="h-10 w-auto object-contain cursor-pointer"
+              onClick={() => navigate('/')}
+            />
+            <p className="text-[11px] text-slate-500 font-medium">Intelligent IoT Sensing & AI Production Control</p>
+          </div>
           {/* Quick Demo Credentials Bar */}
           <div className="p-4 rounded-2xl bg-teal-50/70 border border-teal-200/60 space-y-2">
             <span className="text-xs font-bold text-teal-900 uppercase block tracking-wider">
